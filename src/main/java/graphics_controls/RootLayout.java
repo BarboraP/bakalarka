@@ -58,7 +58,7 @@ public class RootLayout extends AnchorPane {
 
         //populate left pane with multiple colored icons for testing
         //this is where we will add gates types
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < 6; i++) {
             DragIcon icn = new DragIcon();
             setStyleIcon(DragIconType.values()[i], icn);
             addDragDetection(icn);
@@ -252,5 +252,8 @@ public class RootLayout extends AnchorPane {
         gate.getStyleClass().clear();
         gate.getStyleClass().add("dragicon");
         gate.getStyleClass().add(getStyle(type));
+        if(getStyle(type) == "input") {
+            gate.setAsInput();
+        }
     }
 }
