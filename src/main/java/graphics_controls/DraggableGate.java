@@ -276,16 +276,12 @@ public class DraggableGate extends AnchorPane {
 
     public void setAsInput() {
         title_bar.setText("");
-        left_link_handle.setPrefSize(0,0);
-        node_body.setPrefSize(0,0);
-        right_link_handle.setPrefSize(30,22);
-        hBox.setPrefSize(30,22);
-        vBox.setPrefSize(30,32);
-
-
+        left_link_handle.setPrefSize(0, 0);
+        node_body.setPrefSize(0, 0);
+        right_link_handle.setPrefSize(30, 22);
+        hBox.setPrefSize(30, 22);
+        vBox.setPrefSize(30, 32);
         root_pane.setPrefHeight(32.0);
         root_pane.setPrefWidth(30);
-
-
     }
 }
