@@ -2,7 +2,7 @@ package code;
 
 import java.util.UUID;
 
-public class LogicGate {
+public abstract class LogicGate {
 
     private boolean isWorking;
     private Connector output;
@@ -11,8 +11,9 @@ public class LogicGate {
     private UUID id;
 
 
-    public LogicGate() {
+    public LogicGate(UUID pid) {
         isWorking = true;
+        id = pid;
     }
 
     public boolean isWorking() {
@@ -23,4 +24,31 @@ public class LogicGate {
         isWorking = working;
     }
 
+    public Connector getOutput() {
+        return output;
+    }
+
+    public void setOutput(Connector output) {
+        this.output = output;
+    }
+
+    public Connector getInput1() {
+        return input1;
+    }
+
+    public void setInput1(Connector input1) {
+        this.input1 = input1;
+    }
+
+    public Connector getInput2() {
+        return input2;
+    }
+
+    public void setInput2(Connector input2) {
+        this.input2 = input2;
+    }
+
+    public UUID getId() {
+        return id;
+    }
 }

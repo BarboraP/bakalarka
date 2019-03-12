@@ -73,6 +73,7 @@ public class RootLayout extends AnchorPane {
     public void initCircuit(LogicCircuit c) {
         circuit = c;
     }
+
     private void iconDragOverRoot() {
         iconDragOverRootHandler = new EventHandler<DragEvent>() {
             public void handle(DragEvent event) {
