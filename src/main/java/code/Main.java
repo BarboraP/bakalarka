@@ -12,6 +12,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         BorderPane root = new BorderPane();
+        LogicCircuit circuit = new LogicCircuit();
+        RootLayout rootLayout = new RootLayout();
+        rootLayout.initCircuit(circuit);
 
         try {
             Scene scene = new Scene(root, 640, 480);
@@ -22,7 +25,7 @@ public class Main extends Application {
             e.printStackTrace();
         }
 
-        root.setCenter(new RootLayout());
+        root.setCenter(rootLayout);
     }
 
     public static void main(String[] args) {

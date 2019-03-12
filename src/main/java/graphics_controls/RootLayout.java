@@ -1,6 +1,7 @@
 package graphics_controls;
 
 
+import code.LogicCircuit;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,6 +31,7 @@ public class RootLayout extends AnchorPane {
     private EventHandler<DragEvent> iconDragDroppedHandler = null;
     private EventHandler<DragEvent> iconDragOverRightPaneHandler = null;
 
+    private LogicCircuit circuit = null;
     public RootLayout() {
 
         FXMLLoader fxmlLoader = new FXMLLoader(
@@ -68,6 +70,9 @@ public class RootLayout extends AnchorPane {
         buildDragHandlers();
     }
 
+    public void initCircuit(LogicCircuit c) {
+        circuit = c;
+    }
     private void iconDragOverRoot() {
         iconDragOverRootHandler = new EventHandler<DragEvent>() {
             public void handle(DragEvent event) {

@@ -5,9 +5,9 @@ import java.util.UUID;
 public class LogicGate {
 
     private boolean isWorking;
-    private Link output;
-    private Link input1;
-    private Link input2;
+    private Connector output;
+    private Connector input1;
+    private Connector input2;
     private UUID id;
 
 

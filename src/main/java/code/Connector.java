@@ -2,7 +2,7 @@ package code;
 
 import java.util.UUID;
 
-public class Link {
+public class Connector {
     private UUID id;
     private UUID startGateId;
     private UUID endGateId;
