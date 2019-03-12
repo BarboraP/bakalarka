@@ -211,31 +211,27 @@ public class RootLayout extends AnchorPane {
     private String getStyle(DragIconType type) {
         String result = null;
         switch (type) {
-            case blue:
-                result = "icon-blue";
+            case and:
+                result = "and";
                 break;
-            case red:
-                result = "icon-red";
-                break;
-
-            case green:
-                result = "icon-green";
+            case or:
+                result = "or";
                 break;
 
-            case grey:
-                result = "icon-grey";
+            case nand:
+                result = "nand";
                 break;
 
-            case purple:
-                result = "icon-purple";
+            case nor:
+                result = "nor";
                 break;
 
-            case yellow:
-                result = "icon-yellow";
+            case xor:
+                result = "xor";
                 break;
 
-            case black:
-                result = "icon-black";
+            case input:
+                result = "input";
                 break;
 
             default:

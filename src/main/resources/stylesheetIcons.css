@@ -2,7 +2,7 @@
     -fx-background-radius: 10;
 }
 
-.icon-blue {
+.and {
     -fx-background-color: #f4f4f4;
     -fx-background-image: url(Gate_Symbols/AND.svg);
     -fx-background-size: contain;
@@ -10,29 +10,26 @@
     -fx-background-position: center center;
 }
 
-.icon-red {
+.or {
     -fx-background-color: red;
 }
 
-.icon-green {
+.nand {
     -fx-background-color: green;
 }
 
-.icon-black {
+.nor {
     -fx-background-color: black;
 }
 
-.icon-grey {
+.xor {
     -fx-background-color: grey;
 }
 
-.icon-yellow {
-    -fx-background-color: yellow;
-}
-
-.icon-purple {
+.input {
     -fx-background-color: purple;
 }
+
 
 /* for gates*/
 .node-overlay {
