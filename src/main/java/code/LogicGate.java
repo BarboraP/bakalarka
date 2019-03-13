@@ -1,19 +1,20 @@
 package code;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 public abstract class LogicGate {
 
     private boolean isWorking;
     private Connector output;
-    private Connector input1;
-    private Connector input2;
-    private UUID id;
+    private ArrayList<Connector> inputs;
+    private final String id;
 
 
-    public LogicGate(UUID pid) {
+    public LogicGate(String pid) {
         isWorking = true;
         id = pid;
+        inputs = new ArrayList<>();
     }
 
     public boolean isWorking() {
@@ -32,23 +33,14 @@ public abstract class LogicGate {
         this.output = output;
     }
 
-    public Connector getInput1() {
-        return input1;
+    public boolean addInputConnector(Connector c){
+        if(inputs.size() < 2){
+            inputs.add(c);
+            return true;
+        }
+        return  false;
     }
-
-    public void setInput1(Connector input1) {
-        this.input1 = input1;
-    }
-
-    public Connector getInput2() {
-        return input2;
-    }
-
-    public void setInput2(Connector input2) {
-        this.input2 = input2;
-    }
-
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 }

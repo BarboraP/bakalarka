@@ -3,7 +3,7 @@ package code;
 import java.util.UUID;
 
 public class Or_Gate extends LogicGate {
-    public Or_Gate(UUID pid) {
+    public Or_Gate(String pid) {
         super(pid);
     }
 

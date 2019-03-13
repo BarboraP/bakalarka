@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public class And_Gate extends LogicGate {
 
-    public And_Gate(UUID pid) {
+    public And_Gate(String pid) {
         super(pid);
     }
 

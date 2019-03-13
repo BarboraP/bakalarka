@@ -1,6 +1,7 @@
 package graphics_controls;
 
 
+import code.Connector;
 import code.LogicCircuit;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -32,6 +33,7 @@ public class RootLayout extends AnchorPane {
     private EventHandler<DragEvent> iconDragOverRightPaneHandler = null;
 
     private LogicCircuit circuit = null;
+
     public RootLayout() {
 
         FXMLLoader fxmlLoader = new FXMLLoader(
@@ -62,7 +64,7 @@ public class RootLayout extends AnchorPane {
         //this is where we will add gates types
         for (int i = 0; i < 6; i++) {
             DragIcon icn = new DragIcon();
-            setStyleIcon(DragIconType.values()[i], icn);
+            setStyleIcon(GateType.values()[i], icn);
             addDragDetection(icn);
             left_pane.getChildren().add(icn);
         }
@@ -128,8 +130,12 @@ public class RootLayout extends AnchorPane {
 
                         System.out.println(container.getData().toString());
                         DraggableGate gate = new DraggableGate();
-                        setStyleGate(DragIconType.valueOf(container.getValue("type").toString()), gate);
+                        GateType type = GateType.valueOf(container.getValue("type"));
+                        setStyleGate(type, gate);
                         right_pane.getChildren().add(gate);
+
+                        circuit.addGate(type, gate.getId());
+
                         //adds gate to the children of right_pane
                         Point2D cursorPoint = container.getValue("scene_coords");
                         gate.relocateToPoint(new Point2D(cursorPoint.getX() - 32, cursorPoint.getY() - 32));
@@ -169,7 +175,14 @@ public class RootLayout extends AnchorPane {
                         }
 
                         if (source != null && target != null) {
-                            link.bindEnds(source, target);
+
+                            Connector connector = new Connector(sourceId, targetId, link.getId());
+
+                            if (circuit.getGateById(targetId).addInputConnector(connector)) {
+                                link.bindEnds(source, target);
+                                //TODO gets nullpointer if source is input
+                                circuit.getGateById(sourceId).setOutput(connector);
+                            }
                         }
                     }
                 }
@@ -214,7 +227,7 @@ public class RootLayout extends AnchorPane {
         });
     }
 
-    private String getStyle(DragIconType type) {
+    private String getStyle(GateType type) {
         String result = null;
         switch (type) {
             case and:
@@ -246,19 +259,19 @@ public class RootLayout extends AnchorPane {
         return result;
     }
 
-    private void setStyleIcon(DragIconType type, DragIcon icon) {
+    private void setStyleIcon(GateType type, DragIcon icon) {
         icon.setType(type);
         icon.getStyleClass().clear();
         icon.getStyleClass().add("dragicon");
         icon.getStyleClass().add(getStyle(type));
     }
 
-    private void setStyleGate(DragIconType type, DraggableGate gate) {
+    private void setStyleGate(GateType type, DraggableGate gate) {
         gate.setType(type);
         gate.getStyleClass().clear();
         gate.getStyleClass().add("dragicon");
         gate.getStyleClass().add(getStyle(type));
-        if(getStyle(type) == "input") {
+        if (getStyle(type) == "input") {
             gate.setAsInput();
         }
     }

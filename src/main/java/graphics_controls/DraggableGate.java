@@ -50,7 +50,7 @@ public class DraggableGate extends AnchorPane {
     private final DraggableGate self; //for removing node // reference to the class instance stored in the member
     private Link dragLink = null;
     private AnchorPane right_pane = null; // reference to gate's parent
-    private DragIconType type;
+    private GateType type;
 
 
     public DraggableGate() {
@@ -71,6 +71,7 @@ public class DraggableGate extends AnchorPane {
         }
 
         setId(UUID.randomUUID().toString());
+        System.out.println(getId());
     }
 
     @FXML
@@ -266,11 +267,11 @@ public class DraggableGate extends AnchorPane {
         contextLinkDragDropped();
     }
 
-    public DragIconType getType() {
+    public GateType getType() {
         return type;
     }
 
-    public void setType(DragIconType type) {
+    public void setType(GateType type) {
         this.type = type;
     }
 

@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class DragIcon extends AnchorPane {
 
-    private DragIconType type;
+    private GateType type;
 
     public DragIcon() {
 
@@ -29,11 +29,11 @@ public class DragIcon extends AnchorPane {
     private void initialize() {
     }
 
-    public DragIconType getType() {
+    public GateType getType() {
         return type;
     }
 
-    public void setType(DragIconType type) {
+    public void setType(GateType type) {
         this.type = type;
     }
 
