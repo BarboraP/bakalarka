@@ -3,7 +3,6 @@ package code;
 import graphics_controls.GateType;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 public class LogicCircuit {
 
@@ -64,6 +63,33 @@ public class LogicCircuit {
         }
     }
 
+    public void computeOutputs() {
+        for (LogicGate g : gates) {
+            if (g.getOutput() == null) {
+                outputs++;
+            }
+        }
+    }
+
+    public void getTruthTable() {
+
+        computeOutputs();
+        int rows = (int) Math.pow(2, inputs);
+        int columns = inputs + outputs;
+        truthTable = null;
+        truthTable = new boolean[rows][columns];
+        int tmp = 0;
+        for (int i = 0; i < rows; i++) {
+            tmp = i;
+            System.out.println();
+            for (int j = 0; j < inputs; j++) {
+                truthTable[i][inputs - j - 1] = (tmp % 2 == 1);
+                System.out.print(truthTable[i][inputs - j - 1] + "  ");
+                tmp = tmp >> 1;
+            }
+        }
+    }
+
     public LogicGate getGateById(String id) {
         for (LogicGate g : gates) {
             if (g.getId().equals(id)) {
@@ -71,5 +97,13 @@ public class LogicCircuit {
             }
         }
         return null;
+    }
+
+    public void removeGateById(String id) {
+        LogicGate g = getGateById(id);
+        if (g != null) {
+            gates.remove(g);
+        }
+        System.out.println("removed");
     }
 }

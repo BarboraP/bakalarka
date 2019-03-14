@@ -12,4 +12,8 @@ public class Connector {
         this.endGateId = endGateId;
         this.id = id;
     }
+
+    public String getId() {
+        return id;
+    }
 }

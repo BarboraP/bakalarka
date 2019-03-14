@@ -3,10 +3,12 @@ package graphics_controls;
 
 import code.Connector;
 import code.LogicCircuit;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
@@ -30,6 +32,8 @@ public class RootLayout extends AnchorPane {
 
     @FXML
     private FlowPane flow_pane = null;
+    @FXML
+    private Button button_truthTable = null;
 
 
     private DragIcon dragOverIcon = null;
@@ -80,10 +84,21 @@ public class RootLayout extends AnchorPane {
         }
 
         buildDragHandlers();
+        buttonTable();
+    }
+
+    public void buttonTable() {
+        button_truthTable.setOnAction((event) -> {
+            circuit.getTruthTable();
+        });
     }
 
     public void initCircuit(LogicCircuit c) {
         circuit = c;
+    }
+
+    public LogicCircuit getCircuit() {
+        return circuit;
     }
 
     private void iconDragOverRoot() {
@@ -140,6 +155,7 @@ public class RootLayout extends AnchorPane {
 
                         System.out.println(container.getData().toString());
                         DraggableGate gate = new DraggableGate();
+                        gate.setCircuit(circuit);
                         GateType type = GateType.valueOf(container.getValue("type"));
                         setStyleGate(type, gate);
                         right_pane.getChildren().add(gate);

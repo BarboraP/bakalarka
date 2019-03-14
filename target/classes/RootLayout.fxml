@@ -21,7 +21,7 @@
         </SplitPane>
       <FlowPane fx:id="flow_pane" alignment="TOP_CENTER" maxWidth="110.0" prefWidth="110.0">
          <children>
-            <Button maxWidth="110.0" mnemonicParsing="false" prefWidth="110.0" text="Compute Truth Table" wrapText="true" />
+            <Button fx:id="button_truthTable" maxWidth="110.0" mnemonicParsing="false" prefWidth="110.0" text="Compute Truth Table" wrapText="true" />
          </children></FlowPane>
     </children>
 </fx:root>

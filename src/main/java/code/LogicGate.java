@@ -43,4 +43,8 @@ public abstract class LogicGate {
     public String getId() {
         return id;
     }
+
+    public String returnOutputID() {
+       return output.getId();
+    }
 }

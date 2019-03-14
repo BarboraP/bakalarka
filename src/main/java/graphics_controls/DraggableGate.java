@@ -1,5 +1,7 @@
 package graphics_controls;
 
+import code.LogicCircuit;
+import code.LogicGate;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
@@ -7,12 +9,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point2D;
 import javafx.scene.Parent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Label;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -51,6 +53,7 @@ public class DraggableGate extends AnchorPane {
     private Link dragLink = null;
     private AnchorPane right_pane = null; // reference to gate's parent
     private GateType type;
+    private LogicCircuit circuit = null;
 
 
     public DraggableGate() {
@@ -74,6 +77,11 @@ public class DraggableGate extends AnchorPane {
         System.out.println(getId());
     }
 
+
+    public void setCircuit(LogicCircuit c) {
+        circuit = c;
+    }
+
     @FXML
     private void initialize() {
 
@@ -94,7 +102,10 @@ public class DraggableGate extends AnchorPane {
                 right_pane = (AnchorPane) getParent();
             }
         });
+
+
     }
+
 
     public void relocateToPoint(Point2D p) {
         //relocates the object to a point that has been converted to scene coordinates
@@ -154,6 +165,7 @@ public class DraggableGate extends AnchorPane {
         close_button.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent event) {
                 AnchorPane parent = (AnchorPane) self.getParent();
+                circuit.removeGateById(self.getId());
                 parent.getChildren().remove(self);
             }
         });
