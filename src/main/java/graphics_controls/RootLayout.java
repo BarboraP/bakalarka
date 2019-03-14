@@ -13,6 +13,7 @@ import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.geometry.Point2D;
 
@@ -26,6 +27,11 @@ public class RootLayout extends AnchorPane {
     private AnchorPane right_pane = null;
     @FXML
     private VBox left_pane = null;
+
+    @FXML
+    private FlowPane flow_pane = null;
+
+
     private DragIcon dragOverIcon = null;
 
     private EventHandler<DragEvent> iconDragOverRootHandler = null;
@@ -54,6 +60,10 @@ public class RootLayout extends AnchorPane {
         //Add one icon that will be used for the drag-drop process
         //This is added as a child to the root AnchorPane so it can be
         //visible on both sides of the split pane.
+
+        setTopAnchor(flow_pane,0.0);
+        setRightAnchor(flow_pane,0.0);
+        setBottomAnchor(flow_pane, 0.0);
 
         dragOverIcon = new DragIcon();
         dragOverIcon.setVisible(false);
