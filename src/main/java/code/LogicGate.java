@@ -6,19 +6,30 @@ public abstract class LogicGate {
 
     private boolean isWorking;
     private Connector output;
-    private ArrayList<Connector> inputs;
+    protected ArrayList<Connector> inputs;
     private final String id;
     private int outputId;
+    protected LogicCircuit circuit = null;
 
 
-    public LogicGate(String pid) {
+    public LogicGate(String pid, LogicCircuit c) {
         isWorking = true;
         id = pid;
         inputs = new ArrayList<>();
+        circuit = c;
+
+    }
+
+    public int getOutputId() {
+        return outputId;
     }
 
     public void setOutputId(int id) {
         outputId = id;
+    }
+
+    public ArrayList getInputsList() {
+        return inputs;
     }
 
     public boolean isWorking() {
@@ -51,5 +62,15 @@ public abstract class LogicGate {
 
     public String returnOutputID() {
         return output.getId();
+    }
+
+    public boolean getResult(boolean y1, boolean y2) {
+        //todo get result without param??
+        return false;
+    }
+
+    public boolean getResult2() {
+       //todo get input one, get input2 and get result from them
+        return false;
     }
 }

@@ -7,15 +7,17 @@ import java.util.ArrayList;
 public class LogicCircuit {
 
     private ArrayList<LogicGate> gates;
-
+    private ArrayList<LogicGate> outputList;
     private boolean[][] truthTable;
     private int inputs;
     private int outputs;
+    private int rows = (int) Math.pow(2, inputs);
 
     public LogicCircuit() {
         this.gates = new ArrayList<>();
         this.inputs = 0;
         this.outputs = 0;
+        outputList = new ArrayList<>();
     }
 
     public int getInputs() {
@@ -37,22 +39,22 @@ public class LogicCircuit {
     public void addGate(GateType type, String id) {
         switch (type) {
             case and:
-                gates.add(new And_Gate(id));
+                gates.add(new And_Gate(id, this));
                 break;
             case or:
-                gates.add(new Or_Gate(id));
+                gates.add(new Or_Gate(id, this));
                 break;
 
             case nand:
-                gates.add(new Nand_Gate(id));
+                gates.add(new Nand_Gate(id, this));
                 break;
 
             case nor:
-                gates.add(new Nor_Gate(id));
+                gates.add(new Nor_Gate(id, this));
                 break;
 
             case xor:
-                gates.add(new Xor_Gate(id));
+                gates.add(new Xor_Gate(id, this));
                 break;
 
             case input:
@@ -65,9 +67,11 @@ public class LogicCircuit {
     }
 
     public void computeOutputs() {
+
         for (LogicGate g : gates) {
             if (g.getOutput() == null) {
                 g.setOutputId(outputs);
+                outputList.add(g);
                 //set output id to 0 for the first gate
                 //todo index in table = outputid + inputs for truthTable
                 //todo for table with failures = outputid + inputs + gates
@@ -79,7 +83,6 @@ public class LogicCircuit {
     public void getTruthTable() {
 
         computeOutputs();
-        int rows = (int) Math.pow(2, inputs);
         int columns = inputs + outputs;
         truthTable = null;
         truthTable = new boolean[rows][columns];
@@ -113,6 +116,12 @@ public class LogicCircuit {
     }
 
     public void evaluate() {
-        //TODO define number of output on gate?
+        //TODO define number of output on gate? //we put IDs there
+        //todo get inputs 
+        for (int i = 0; i < rows; i++) {
+            for (LogicGate g : outputList) {
+                truthTable[rows][g.getOutputId() + inputs] = g.getResult2();
+            }
+        }
     }
 }

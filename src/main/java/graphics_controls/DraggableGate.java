@@ -166,6 +166,7 @@ public class DraggableGate extends AnchorPane {
             public void handle(MouseEvent event) {
                 AnchorPane parent = (AnchorPane) self.getParent();
                 circuit.removeGateById(self.getId());
+                //TODO deleting outputs not working
                 parent.getChildren().remove(self);
             }
         });

@@ -1,7 +1,5 @@
 package code;
 
-import java.util.UUID;
-
 public class Connector {
     private final String id;
     private final String startGateId;
@@ -15,5 +13,13 @@ public class Connector {
 
     public String getId() {
         return id;
+    }
+
+    public String getStartGateId() {
+        return startGateId;
+    }
+
+    public String getEndGateId() {
+        return endGateId;
     }
 }
