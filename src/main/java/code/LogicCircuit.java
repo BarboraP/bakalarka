@@ -115,12 +115,13 @@ public class LogicCircuit {
         System.out.println("removed");
     }
 
+    //todo param vstupy a volat metodu pre kazdy riadok v tabuli??
     public void evaluate() {
         //TODO define number of output on gate? //we put IDs there
-        //todo get inputs 
+        //todo prerob to je to na hovno
         for (int i = 0; i < rows; i++) {
             for (LogicGate g : outputList) {
-                truthTable[rows][g.getOutputId() + inputs] = g.getResult2();
+                truthTable[rows][g.getOutputId() + inputs] = g.getResult2(/*put inputs here?*/);
             }
         }
     }
