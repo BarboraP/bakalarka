@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class LogicCircuit {
 
     private ArrayList<LogicGate> gates;
+
     private boolean[][] truthTable;
     private int inputs;
     private int outputs;
@@ -66,6 +67,10 @@ public class LogicCircuit {
     public void computeOutputs() {
         for (LogicGate g : gates) {
             if (g.getOutput() == null) {
+                g.setOutputId(outputs);
+                //set output id to 0 for the first gate
+                //todo index in table = outputid + inputs for truthTable
+                //todo for table with failures = outputid + inputs + gates
                 outputs++;
             }
         }
@@ -83,8 +88,8 @@ public class LogicCircuit {
             tmp = i;
             System.out.println();
             for (int j = 0; j < inputs; j++) {
-                truthTable[i][inputs - j - 1] = (tmp % 2 == 1);
-                System.out.print(truthTable[i][inputs - j - 1] + "  ");
+                truthTable[i][j] = (tmp % 2 == 1);
+                System.out.print(truthTable[i][j] + "  ");
                 tmp = tmp >> 1;
             }
         }
@@ -105,5 +110,9 @@ public class LogicCircuit {
             gates.remove(g);
         }
         System.out.println("removed");
+    }
+
+    public void evaluate() {
+        //TODO define number of output on gate?
     }
 }

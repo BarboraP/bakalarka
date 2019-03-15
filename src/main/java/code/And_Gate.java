@@ -1,7 +1,5 @@
 package code;
 
-import java.util.UUID;
-
 public class And_Gate extends LogicGate {
 
     public And_Gate(String pid) {
@@ -9,7 +7,15 @@ public class And_Gate extends LogicGate {
     }
 
     public boolean getResult(boolean y1, boolean y2) {
-        return (y1 & y2);
+        if(isWorking()) {
+            return (y1 & y2);
+        }
+        return getResultFailure();
+
     }
 
+    private boolean getResultFailure() {
+        //TODO user will define this function somehow
+        return false;
+    }
 }

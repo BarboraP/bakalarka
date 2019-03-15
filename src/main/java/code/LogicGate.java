@@ -1,7 +1,6 @@
 package code;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 public abstract class LogicGate {
 
@@ -9,12 +8,17 @@ public abstract class LogicGate {
     private Connector output;
     private ArrayList<Connector> inputs;
     private final String id;
+    private int outputId;
 
 
     public LogicGate(String pid) {
         isWorking = true;
         id = pid;
         inputs = new ArrayList<>();
+    }
+
+    public void setOutputId(int id) {
+        outputId = id;
     }
 
     public boolean isWorking() {
@@ -33,18 +37,19 @@ public abstract class LogicGate {
         this.output = output;
     }
 
-    public boolean addInputConnector(Connector c){
-        if(inputs.size() < 2){
+    public boolean addInputConnector(Connector c) {
+        if (inputs.size() < 2) {
             inputs.add(c);
             return true;
         }
-        return  false;
+        return false;
     }
+
     public String getId() {
         return id;
     }
 
     public String returnOutputID() {
-       return output.getId();
+        return output.getId();
     }
 }
