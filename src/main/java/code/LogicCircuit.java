@@ -12,12 +12,16 @@ public class LogicCircuit {
     private int inputs;
     private int outputs;
     private int rows = (int) Math.pow(2, inputs);
+    //need list of inputs to know index of input
+    //todo input = gate with no inputs
+    private ArrayList<LogicGate> inputList;
 
     public LogicCircuit() {
         this.gates = new ArrayList<>();
         this.inputs = 0;
         this.outputs = 0;
         outputList = new ArrayList<>();
+        inputList = new ArrayList<>();
     }
 
     public int getInputs() {
@@ -58,7 +62,9 @@ public class LogicCircuit {
                 break;
 
             case input:
-                //TODO do inputs need to be saved as Gates or in another list or not at all?
+                LogicGate g = new Input(id, this, inputs);
+                gates.add(g);
+                inputList.add(g);
                 inputs++;
                 break;
             default:
@@ -67,7 +73,6 @@ public class LogicCircuit {
     }
 
     public void computeOutputs() {
-
         for (LogicGate g : gates) {
             if (g.getOutput() == null) {
                 g.setOutputId(outputs);
@@ -92,10 +97,12 @@ public class LogicCircuit {
             System.out.println();
             for (int j = 0; j < inputs; j++) {
                 truthTable[i][j] = (tmp % 2 == 1);
-                System.out.print(truthTable[i][j] + "  ");
+                //System.out.print(truthTable[i][j] + "  ");
                 tmp = tmp >> 1;
             }
         }
+
+        this.evaluate();
     }
 
     public LogicGate getGateById(String id) {
@@ -115,14 +122,41 @@ public class LogicCircuit {
         System.out.println("removed");
     }
 
-    //todo param vstupy a volat metodu pre kazdy riadok v tabuli??
-    public void evaluate() {
-        //TODO define number of output on gate? //we put IDs there
-        //todo prerob to je to na hovno
-        for (int i = 0; i < rows; i++) {
-            for (LogicGate g : outputList) {
-                truthTable[rows][g.getOutputId() + inputs] = g.getResult2(/*put inputs here?*/);
+    // todo: rename this monstrosity
+    private boolean meow(LogicGate baska, int row) {
+
+        boolean output1 = true, output2 = true;
+        for (int connection = 0; connection < baska.getInputsList().size(); connection++) {
+            LogicGate input = baska.getInputsList().get(connection).getStartGate();
+
+            int inputIndex = input.getIndex();
+
+            // It is a logic gate
+            if (inputIndex == -1) {
+                return this.meow(input, row);
+            } else {
+                if (connection == 0) {
+                    output1 = truthTable[row][inputIndex];
+                } else {
+                    output2 = truthTable[row][inputIndex];
+                }
             }
+        }
+
+        return baska.getResult(output1, output2);
+    }
+
+    public void evaluate() {
+
+        // Start at the last logic gate.
+        // Todo: What if this gate doesn't exist?
+        //todo indexovanie tabule
+        boolean[] q = new boolean[rows];
+        LogicGate lastGate = outputList.get(0);
+
+        for (int row = 0; row < rows; row++) {
+            q[row] = this.meow(lastGate, row);
+            System.out.println(q[row]);
         }
     }
 }

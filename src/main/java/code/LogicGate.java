@@ -28,7 +28,7 @@ public abstract class LogicGate {
         outputId = id;
     }
 
-    public ArrayList getInputsList() {
+    public ArrayList<Connector> getInputsList() {
         return inputs;
     }
 
@@ -69,8 +69,7 @@ public abstract class LogicGate {
         return false;
     }
 
-    public boolean getResult2() {
-       //todo get input one, get input2 and get result from them
-        return false;
+    public int getIndex() {
+        return -1;
     }
 }

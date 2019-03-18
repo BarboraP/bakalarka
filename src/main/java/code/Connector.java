@@ -2,12 +2,12 @@ package code;
 
 public class Connector {
     private final String id;
-    private final String startGateId;
-    private final String endGateId;
+    private final LogicGate startGate; //make it gates??
+    private final LogicGate endGate;
 
-    public Connector(String startGateId, String endGateId, String id) {
-        this.startGateId = startGateId;
-        this.endGateId = endGateId;
+    public Connector(LogicGate startGate, LogicGate endGate, String id) {
+        this.startGate = startGate;
+        this.endGate = endGate;
         this.id = id;
     }
 
@@ -15,11 +15,11 @@ public class Connector {
         return id;
     }
 
-    public String getStartGateId() {
-        return startGateId;
+    public LogicGate getStartGate() {
+        return startGate;
     }
 
-    public String getEndGateId() {
-        return endGateId;
+    public LogicGate getEndGate() {
+        return endGate;
     }
 }

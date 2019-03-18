@@ -65,8 +65,8 @@ public class RootLayout extends AnchorPane {
         //This is added as a child to the root AnchorPane so it can be
         //visible on both sides of the split pane.
 
-        setTopAnchor(flow_pane,0.0);
-        setRightAnchor(flow_pane,0.0);
+        setTopAnchor(flow_pane, 0.0);
+        setRightAnchor(flow_pane, 0.0);
         setBottomAnchor(flow_pane, 0.0);
 
         dragOverIcon = new DragIcon();
@@ -154,6 +154,7 @@ public class RootLayout extends AnchorPane {
                     if (container.getValue("scene_coords") != null) {
 
                         System.out.println(container.getData().toString());
+
                         DraggableGate gate = new DraggableGate();
                         gate.setCircuit(circuit);
                         GateType type = GateType.valueOf(container.getValue("type"));
@@ -202,7 +203,7 @@ public class RootLayout extends AnchorPane {
 
                         if (source != null && target != null) {
 
-                            Connector connector = new Connector(sourceId, targetId, link.getId());
+                            Connector connector = new Connector(circuit.getGateById(sourceId), circuit.getGateById(targetId), link.getId());
 
                             if (circuit.getGateById(targetId).addInputConnector(connector)) {
                                 link.bindEnds(source, target);
