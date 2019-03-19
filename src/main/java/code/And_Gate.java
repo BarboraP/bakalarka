@@ -13,11 +13,4 @@ public class And_Gate extends LogicGate {
         return getResultFailure();
 
     }
-
-    private boolean getResultFailure() {
-        //TODO user will define this function somehow
-        return false;
-    }
-
-
 }

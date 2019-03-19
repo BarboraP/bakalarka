@@ -3,7 +3,6 @@ package graphics_controls;
 
 import code.Connector;
 import code.LogicCircuit;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +14,6 @@ import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.geometry.Point2D;
 
@@ -31,9 +29,11 @@ public class RootLayout extends AnchorPane {
     private VBox left_pane = null;
 
     @FXML
-    private FlowPane flow_pane = null;
+    private VBox right_box = null;
     @FXML
     private Button button_truthTable = null;
+    @FXML
+    private Button button_failure = null;
 
 
     private DragIcon dragOverIcon = null;
@@ -65,9 +65,9 @@ public class RootLayout extends AnchorPane {
         //This is added as a child to the root AnchorPane so it can be
         //visible on both sides of the split pane.
 
-        setTopAnchor(flow_pane, 0.0);
-        setRightAnchor(flow_pane, 0.0);
-        setBottomAnchor(flow_pane, 0.0);
+        setTopAnchor(right_box, 0.0);
+        setRightAnchor(right_box, 0.0);
+        setBottomAnchor(right_box, 0.0);
 
         dragOverIcon = new DragIcon();
         dragOverIcon.setVisible(false);
@@ -85,12 +85,21 @@ public class RootLayout extends AnchorPane {
 
         buildDragHandlers();
         buttonTable();
+        buttonFailure();
     }
 
     public void buttonTable() {
         button_truthTable.setOnAction((event) -> {
             circuit.getTruthTable();
         });
+    }
+
+    public void buttonFailure() {
+
+        button_failure.setOnAction((event) -> {
+            circuit.getFailureTable();
+        });
+
     }
 
     public void initCircuit(LogicCircuit c) {

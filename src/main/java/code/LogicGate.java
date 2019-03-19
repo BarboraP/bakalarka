@@ -6,7 +6,7 @@ public abstract class LogicGate {
 
     private boolean isWorking;
     private Connector output;
-    protected ArrayList<Connector> inputs;
+    protected ArrayList<Connector> inputConnectorsList;
     private final String id;
     private int outputId;
     protected LogicCircuit circuit = null;
@@ -15,9 +15,8 @@ public abstract class LogicGate {
     public LogicGate(String pid, LogicCircuit c) {
         isWorking = true;
         id = pid;
-        inputs = new ArrayList<>();
+        inputConnectorsList = new ArrayList<>();
         circuit = c;
-
     }
 
     public int getOutputId() {
@@ -28,8 +27,8 @@ public abstract class LogicGate {
         outputId = id;
     }
 
-    public ArrayList<Connector> getInputsList() {
-        return inputs;
+    public ArrayList<Connector> getInputList() {
+        return inputConnectorsList;
     }
 
     public boolean isWorking() {
@@ -49,8 +48,8 @@ public abstract class LogicGate {
     }
 
     public boolean addInputConnector(Connector c) {
-        if (inputs.size() < 2) {
-            inputs.add(c);
+        if (inputConnectorsList.size() < 2) {
+            inputConnectorsList.add(c);
             return true;
         }
         return false;
@@ -65,11 +64,15 @@ public abstract class LogicGate {
     }
 
     public boolean getResult(boolean y1, boolean y2) {
-        //todo get result without param??
         return false;
     }
 
     public int getIndex() {
         return -1;
+    }
+
+    public boolean getResultFailure() {
+        //TODO let user define failure state of each type of gate
+        return false;
     }
 }

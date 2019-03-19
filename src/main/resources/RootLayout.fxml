@@ -19,9 +19,10 @@
                 <AnchorPane fx:id="right_pane" />
             </items>
         </SplitPane>
-      <FlowPane fx:id="flow_pane" alignment="TOP_CENTER" maxWidth="110.0" prefWidth="110.0">
+      <VBox fx:id="right_box" alignment="TOP_CENTER" maxWidth="110.0" prefWidth="110.0">
          <children>
             <Button fx:id="button_truthTable" maxWidth="110.0" mnemonicParsing="false" prefWidth="110.0" text="Compute Truth Table" wrapText="true" />
-         </children></FlowPane>
+            <Button fx:id="button_failure" maxWidth="110.0" mnemonicParsing="false" prefWidth="110.0" text="Compute Failure Table" wrapText="true" />
+         </children></VBox>
     </children>
 </fx:root>

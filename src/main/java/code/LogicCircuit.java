@@ -11,15 +11,15 @@ public class LogicCircuit {
     private boolean[][] truthTable;
     private int inputs;
     private int outputs;
-    private int rows = (int) Math.pow(2, inputs);
-    //need list of inputs to know index of input
-    //todo input = gate with no inputs
+    private int rows;
     private ArrayList<LogicGate> inputList;
+    private boolean[][] failureTable;
 
     public LogicCircuit() {
         this.gates = new ArrayList<>();
         this.inputs = 0;
         this.outputs = 0;
+        this.rows = 0;
         outputList = new ArrayList<>();
         inputList = new ArrayList<>();
     }
@@ -32,7 +32,7 @@ public class LogicCircuit {
         this.inputs = inputs;
     }
 
-    public int getOutputs() {
+    public int getNumberOfOutputs() {
         return outputs;
     }
 
@@ -72,14 +72,11 @@ public class LogicCircuit {
         }
     }
 
-    public void computeOutputs() {
+    public void loadOutputGates() {
         for (LogicGate g : gates) {
             if (g.getOutput() == null) {
                 g.setOutputId(outputs);
                 outputList.add(g);
-                //set output id to 0 for the first gate
-                //todo index in table = outputid + inputs for truthTable
-                //todo for table with failures = outputid + inputs + gates
                 outputs++;
             }
         }
@@ -87,22 +84,35 @@ public class LogicCircuit {
 
     public void getTruthTable() {
 
-        computeOutputs();
+        rows = (int) Math.pow(2, inputs);
+
+        loadOutputGates();
+
         int columns = inputs + outputs;
-        truthTable = null;
+        // truthTable = null;
         truthTable = new boolean[rows][columns];
         int tmp = 0;
+
         for (int i = 0; i < rows; i++) {
             tmp = i;
             System.out.println();
+
             for (int j = 0; j < inputs; j++) {
                 truthTable[i][j] = (tmp % 2 == 1);
+
                 //System.out.print(truthTable[i][j] + "  ");
+
                 tmp = tmp >> 1;
             }
         }
+        this.eval();
 
-        this.evaluate();
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                System.out.print(truthTable[i][j] + " ");
+            }
+            System.out.println();
+        }
     }
 
     public LogicGate getGateById(String id) {
@@ -114,6 +124,7 @@ public class LogicCircuit {
         return null;
     }
 
+
     public void removeGateById(String id) {
         LogicGate g = getGateById(id);
         if (g != null) {
@@ -122,41 +133,72 @@ public class LogicCircuit {
         System.out.println("removed");
     }
 
-    // todo: rename this monstrosity
-    private boolean meow(LogicGate baska, int row) {
+    private boolean computeOutput(LogicGate gate, int row) {
 
-        boolean output1 = true, output2 = true;
-        for (int connection = 0; connection < baska.getInputsList().size(); connection++) {
-            LogicGate input = baska.getInputsList().get(connection).getStartGate();
+        boolean output1 = true;
+        boolean output2 = true;
+
+        for (int connection = 0; connection < gate.getInputList().size(); connection++) {
+
+            LogicGate input = gate.getInputList().get(connection).getStartGate();
 
             int inputIndex = input.getIndex();
 
             // It is a logic gate
             if (inputIndex == -1) {
-                return this.meow(input, row);
+
+                if (connection == 0) {
+                    output1 = computeOutput(input, row);
+                } else {
+                    output2 = computeOutput(input, row);
+                }
+
             } else {
                 if (connection == 0) {
                     output1 = truthTable[row][inputIndex];
+
                 } else {
                     output2 = truthTable[row][inputIndex];
                 }
             }
         }
-
-        return baska.getResult(output1, output2);
+        return gate.getResult(output1, output2);
     }
 
-    public void evaluate() {
-
-        // Start at the last logic gate.
-        // Todo: What if this gate doesn't exist?
-        //todo indexovanie tabule
-        boolean[] q = new boolean[rows];
-        LogicGate lastGate = outputList.get(0);
-
+    public void eval() {
         for (int row = 0; row < rows; row++) {
-            q[row] = this.meow(lastGate, row);
-            System.out.println(q[row]);
+
+            for (int gate = 0; gate < outputList.size(); gate++) {
+
+                LogicGate output = outputList.get(gate);
+                boolean a = this.computeOutput(output, row);
+                truthTable[row][gate + inputs] = a;
+            }
         }
+    }
+
+    public void getFailureTable() {
+
+        if(truthTable == null) {
+            getTruthTable();
+        }
+        int gatesCount = gates.size() - inputs; //this is N
+        int fRows = rows * ((int) Math.pow(2, gatesCount));
+        int fColumns = gates.size() + outputs;//outputs and inputs are also in gatesList i think
+
+        failureTable = new boolean[fRows][fColumns];
+
+        for(int i = 0; i < rows; i++) {
+            int a = i*(int) Math.pow(2, gatesCount);
+            for(int j = 0; j < ((int) Math.pow(2, gatesCount)); j++) {
+                failureTable[j + a] = truthTable[i];
+            }
+
+        }
+
+
+
+
+        System.out.println("wda");
     }
 }
