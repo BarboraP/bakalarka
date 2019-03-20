@@ -63,7 +63,7 @@ public class LogicCircuit {
 
             case input:
                 LogicGate g = new Input(id, this, inputs);
-                gates.add(g);
+                //      gates.add(g);
                 inputList.add(g);
                 inputs++;
                 break;
@@ -83,28 +83,22 @@ public class LogicCircuit {
     }
 
     public void getTruthTable() {
-
-        rows = (int) Math.pow(2, inputs);
-
         loadOutputGates();
-
+        rows = (int) Math.pow(2, inputs);
         int columns = inputs + outputs;
-        // truthTable = null;
         truthTable = new boolean[rows][columns];
-        int tmp = 0;
 
+        int tmp;
         for (int i = 0; i < rows; i++) {
+
             tmp = i;
-            System.out.println();
 
             for (int j = 0; j < inputs; j++) {
                 truthTable[i][j] = (tmp % 2 == 1);
-
-                //System.out.print(truthTable[i][j] + "  ");
-
                 tmp = tmp >> 1;
             }
         }
+
         this.eval();
 
         for (int i = 0; i < rows; i++) {
@@ -121,9 +115,13 @@ public class LogicCircuit {
                 return g;
             }
         }
+        for (LogicGate input : inputList) {
+            if (id.equals(input.getId())) {
+                return input;
+            }
+        }
         return null;
     }
-
 
     public void removeGateById(String id) {
         LogicGate g = getGateById(id);
@@ -141,7 +139,6 @@ public class LogicCircuit {
         for (int connection = 0; connection < gate.getInputList().size(); connection++) {
 
             LogicGate input = gate.getInputList().get(connection).getStartGate();
-
             int inputIndex = input.getIndex();
 
             // It is a logic gate
@@ -156,7 +153,6 @@ public class LogicCircuit {
             } else {
                 if (connection == 0) {
                     output1 = truthTable[row][inputIndex];
-
                 } else {
                     output2 = truthTable[row][inputIndex];
                 }
@@ -178,27 +174,38 @@ public class LogicCircuit {
     }
 
     public void getFailureTable() {
-
-        if(truthTable == null) {
+        if (truthTable == null) {
             getTruthTable();
         }
-        int gatesCount = gates.size() - inputs; //this is N
-        int fRows = rows * ((int) Math.pow(2, gatesCount));
-        int fColumns = gates.size() + outputs;//outputs and inputs are also in gatesList i think
+        //sets dimensions for table
+        int failureRows = (int) Math.pow(2, gates.size());
+        int fRows = rows * failureRows;
+        int fColumns = gates.size() + outputs + inputs;//outputs and inputs are also in gatesList i think
 
         failureTable = new boolean[fRows][fColumns];
+        int tmp;
 
-        for(int i = 0; i < rows; i++) {
-            int a = i*(int) Math.pow(2, gatesCount);
-            for(int j = 0; j < ((int) Math.pow(2, gatesCount)); j++) {
-                failureTable[j + a] = truthTable[i];
+        //copies input values from truth table, sets failure values
+        for (int i = 0; i < rows; i++) {
+            int a = i * failureRows;
+            for (int j = 0; j < failureRows; j++) {
+                System.arraycopy(truthTable[i], 0, failureTable[j + a], 0, inputs);
+
+                tmp = j;
+                for (int k = 0; k < gates.size(); k++) {
+                    failureTable[j + a][k + inputs] = (tmp % 2 == 1);
+                    tmp = tmp >> 1;
+                }
             }
-
         }
 
-
-
-
-        System.out.println("wda");
+        for (int i = 0; i < fRows; i++) {
+            for (int j = 0; j < fColumns; j++) {
+                System.out.print(failureTable[i][j] + " ");
+            }
+            System.out.println();
+        }
     }
+
+
 }

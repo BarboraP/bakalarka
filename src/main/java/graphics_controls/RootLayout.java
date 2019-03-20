@@ -3,6 +3,7 @@ package graphics_controls;
 
 import code.Connector;
 import code.LogicCircuit;
+import code.LogicGate;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -212,12 +213,13 @@ public class RootLayout extends AnchorPane {
 
                         if (source != null && target != null) {
 
-                            Connector connector = new Connector(circuit.getGateById(sourceId), circuit.getGateById(targetId), link.getId());
+                            LogicGate sourceGate = circuit.getGateById(sourceId);
+                            LogicGate targetGate = circuit.getGateById(targetId);
+                            Connector connector = new Connector(sourceGate, targetGate, link.getId());
 
                             if (circuit.getGateById(targetId).addInputConnector(connector)) {
                                 link.bindEnds(source, target);
-                                //TODO gets nullpointer if source is input
-                                circuit.getGateById(sourceId).setOutput(connector);
+                                sourceGate.setOutput(connector);
                             }
                         }
                     }

@@ -11,6 +11,5 @@ public class And_Gate extends LogicGate {
             return (y1 & y2);
         }
         return getResultFailure();
-
     }
 }
