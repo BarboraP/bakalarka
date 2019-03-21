@@ -13,7 +13,7 @@
    <children>
       <VBox fx:id="vBox" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <GridPane styleClass="node-overlay">
+            <GridPane fx:id="gate_top_menu" styleClass="node-overlay">
               <columnConstraints>
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
                 <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="25.0" />

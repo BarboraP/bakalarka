@@ -75,4 +75,29 @@ public abstract class LogicGate {
         //TODO let user define failure state of each type of gate
         return false;
     }
+
+    public boolean findAndRemoveConnector(String id) {
+        for (int i = 0; i < inputConnectorsList.size(); i++) {
+            if (id.equals(inputConnectorsList.get(i).getId())) {
+                inputConnectorsList.remove(i);
+                return true;
+            }
+        }
+        if (output != null && id.equals(output.getId())) {
+            output = null;
+            return true;
+        }
+        return false;
+    }
+
+    public ArrayList<String> getConnectorsID() {
+        ArrayList<String> list = new ArrayList<>();
+        if (output != null) {
+            list.add(output.getId());
+        }
+        for (int i = 0; i < inputConnectorsList.size(); i++) {
+            list.add(inputConnectorsList.get(i).getId());
+        }
+        return list;
+    }
 }

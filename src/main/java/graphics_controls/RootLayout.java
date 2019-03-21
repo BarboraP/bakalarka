@@ -254,7 +254,7 @@ public class RootLayout extends AnchorPane {
                 base_pane.setOnDragOver(iconDragOverRootHandler);
                 right_pane.setOnDragOver(iconDragOverRightPaneHandler);
                 right_pane.setOnDragDropped(iconDragDroppedHandler);
-                
+
                 //get a reference to the clicked DragIcon object
                 DragIcon icon = (DragIcon) event.getSource();
 

@@ -15,6 +15,9 @@ public class LogicCircuit {
     private ArrayList<LogicGate> inputList;
     private boolean[][] failureTable;
 
+    //todo saving and loading data
+    //todo define failure function by table
+
     public LogicCircuit() {
         this.gates = new ArrayList<>();
         this.inputs = 0;
@@ -123,12 +126,23 @@ public class LogicCircuit {
         return null;
     }
 
-    public void removeGateById(String id) {
+    public ArrayList<String> removeGateById(String id) {
         LogicGate g = getGateById(id);
+        ArrayList<String> ids = null;
         if (g != null) {
+
+            ids = g.getConnectorsID();
+            //todo optimalize
+            for (int i = 0; i < ids.size(); i++) {
+                for (LogicGate gate : gates) {
+                    gate.findAndRemoveConnector(ids.get(i));
+                }
+            }
             gates.remove(g);
         }
+
         System.out.println("removed");
+        return ids;
     }
 
     private boolean computeOutput(LogicGate gate, int row) {
@@ -199,6 +213,7 @@ public class LogicCircuit {
             }
         }
 
+
         for (int i = 0; i < fRows; i++) {
             for (int j = 0; j < fColumns; j++) {
                 System.out.print(failureTable[i][j] + " ");
@@ -206,6 +221,4 @@ public class LogicCircuit {
             System.out.println();
         }
     }
-
-
 }

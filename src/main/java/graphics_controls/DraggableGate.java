@@ -8,6 +8,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point2D;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.input.ClipboardContent;
@@ -19,6 +20,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.ListIterator;
 import java.util.UUID;
 
 public class DraggableGate extends AnchorPane {
@@ -165,12 +168,22 @@ public class DraggableGate extends AnchorPane {
         close_button.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent event) {
                 AnchorPane parent = (AnchorPane) self.getParent();
-                circuit.removeGateById(self.getId());
-                //TODO deleting outputs not working
+                ArrayList<String> a = circuit.removeGateById(self.getId());
+
+                for (int i = 0; i < a.size(); i++) {
+                    for (ListIterator<Node> iterNode = parent.getChildren().listIterator(); iterNode.hasNext(); ) {
+                        Node node = iterNode.next();
+                        if (node.getId() == null)
+                            continue;
+                        if (node.getId().equals(a.get(i)))
+                            iterNode.remove();
+                    }
+                }
                 parent.getChildren().remove(self);
             }
         });
     }
+
 
     private void buildNodeDragHandlers() {
         //if anything goes wrong, just copy code from methods above in the same order back here

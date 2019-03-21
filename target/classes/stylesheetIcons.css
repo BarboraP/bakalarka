@@ -56,3 +56,12 @@
     -fx-background-radius: 0 0 0 5;
     -fx-background-color: rgba(255, 255, 255, 0.35)
 }
+
+
+#gate_top_menu{
+    -fx-opacity:0;
+}
+
+#gate_top_menu:hover{
+    -fx-opacity: 0.85;
+}
