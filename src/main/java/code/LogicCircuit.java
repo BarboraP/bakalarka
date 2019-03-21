@@ -17,6 +17,8 @@ public class LogicCircuit {
 
     //todo saving and loading data
     //todo define failure function by table
+    //todo results with failure calculation
+    //todo reliability analysis
 
     public LogicCircuit() {
         this.gates = new ArrayList<>();
@@ -132,7 +134,6 @@ public class LogicCircuit {
         if (g != null) {
 
             ids = g.getConnectorsID();
-            //todo optimalize
             for (int i = 0; i < ids.size(); i++) {
                 for (LogicGate gate : gates) {
                     gate.findAndRemoveConnector(ids.get(i));

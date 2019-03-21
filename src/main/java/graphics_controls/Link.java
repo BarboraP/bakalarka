@@ -15,8 +15,6 @@ public class Link extends AnchorPane {
 
     @FXML
     private CubicCurve node_link = null;
-
-    //TODO remove by double clicking on link
     public Link() {
         FXMLLoader fxmlLoader = new FXMLLoader(
                 getClass().getResource("/Link.fxml")
