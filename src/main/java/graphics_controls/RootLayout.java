@@ -39,9 +39,7 @@ public class RootLayout extends AnchorPane {
     @FXML
     private ScrollPane sc = null;
     @FXML
-    private AnchorPane base_right_pane;
-
-    //todo scroll and zoom
+    private AnchorPane base_right_pane = null;
 
     private DragIcon dragOverIcon = null;
 
@@ -51,12 +49,10 @@ public class RootLayout extends AnchorPane {
 
     private LogicCircuit circuit = null;
 
+
     public RootLayout() {
 
-
-        FXMLLoader fxmlLoader = new FXMLLoader(
-                getClass().getResource("/RootLayout.fxml")
-        );
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/RootLayout.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try {
@@ -76,7 +72,7 @@ public class RootLayout extends AnchorPane {
         setTopAnchor(right_box, 0.0);
         setRightAnchor(right_box, 0.0);
         setBottomAnchor(right_box, 0.0);
-        
+
 
         base_right_pane.setTopAnchor(sc, 0.0);
         base_right_pane.setBottomAnchor(sc, 0.0);
@@ -170,8 +166,6 @@ public class RootLayout extends AnchorPane {
 
                 right_pane.removeEventHandler(DragEvent.DRAG_OVER, iconDragOverRightPaneHandler);
                 right_pane.removeEventHandler(DragEvent.DRAG_DROPPED, iconDragDroppedHandler);
-                right_pane.getParent().removeEventHandler(DragEvent.DRAG_OVER, iconDragOverRightPaneHandler);
-                right_pane.getParent().removeEventHandler(DragEvent.DRAG_DROPPED, iconDragDroppedHandler);
                 base_pane.removeEventHandler(DragEvent.DRAG_OVER, iconDragOverRootHandler);
 
                 dragOverIcon.setVisible(false);
@@ -258,14 +252,9 @@ public class RootLayout extends AnchorPane {
             public void handle(MouseEvent event) {
                 // set the other drag event handles on their respective objects
                 base_pane.setOnDragOver(iconDragOverRootHandler);
-
-                right_pane.getParent().setOnDragOver(iconDragOverRightPaneHandler);
                 right_pane.setOnDragOver(iconDragOverRightPaneHandler);
-
-                right_pane.getParent().setOnDragDropped(iconDragDroppedHandler);
                 right_pane.setOnDragDropped(iconDragDroppedHandler);
-
-
+                
                 //get a reference to the clicked DragIcon object
                 DragIcon icon = (DragIcon) event.getSource();
 
