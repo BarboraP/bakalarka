@@ -15,7 +15,7 @@ public class LogicCircuit {
     private ArrayList<LogicGate> inputList;
     private boolean[][] failureTable;
 
-    //todo saving and loading data
+    //todo saving and loading data //json?
     //todo define failure function by table
     //todo results with failure calculation
     //todo reliability analysis

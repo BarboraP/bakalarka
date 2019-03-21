@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/code/LogicCircuit.java" afterPath="$PROJECT_DIR$/src/main/java/code/LogicCircuit.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/graphics_controls/Link.java" afterPath="$PROJECT_DIR$/src/main/java/graphics_controls/Link.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Gate_Symbols/AND.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/stylesheetIcons.css" afterPath="$PROJECT_DIR$/src/main/resources/stylesheetIcons.css" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -70,8 +72,8 @@
       <file leaf-file-name="LogicGate.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/code/LogicGate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1069">
-              <caret line="98" column="57" lean-forward="true" selection-start-line="98" selection-start-column="57" selection-end-line="98" selection-end-column="57" />
+            <state relative-caret-position="1672">
+              <caret line="98" column="57" lean-forward="false" selection-start-line="98" selection-start-column="57" selection-end-line="98" selection-end-column="57" />
               <folding>
                 <element signature="e#497#498#0" expanded="true" />
                 <element signature="e#528#529#0" expanded="true" />
@@ -116,8 +118,8 @@
       <file leaf-file-name="DraggableGate.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/graphics_controls/DraggableGate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="548">
-              <caret line="178" column="46" lean-forward="true" selection-start-line="178" selection-start-column="46" selection-end-line="178" selection-end-column="46" />
+            <state relative-caret-position="3388">
+              <caret line="178" column="46" lean-forward="false" selection-start-line="178" selection-start-column="46" selection-end-line="178" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2581#2582#0" expanded="true" />
@@ -141,23 +143,46 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LogicCircuit.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LogicCircuit.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/code/LogicCircuit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state relative-caret-position="462">
+              <caret line="24" column="24" lean-forward="true" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#795#796#0" expanded="true" />
-                <element signature="e#824#825#0" expanded="true" />
-                <element signature="e#865#866#0" expanded="true" />
-                <element signature="e#901#902#0" expanded="true" />
-                <element signature="e#940#941#0" expanded="true" />
-                <element signature="e#970#971#0" expanded="true" />
-                <element signature="e#1013#1014#0" expanded="true" />
-                <element signature="e#1051#1052#0" expanded="true" />
+                <element signature="e#803#804#0" expanded="true" />
+                <element signature="e#832#833#0" expanded="true" />
+                <element signature="e#873#874#0" expanded="true" />
+                <element signature="e#909#910#0" expanded="true" />
+                <element signature="e#948#949#0" expanded="true" />
+                <element signature="e#978#979#0" expanded="true" />
+                <element signature="e#1021#1022#0" expanded="true" />
+                <element signature="e#1059#1060#0" expanded="true" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="stylesheetIcons.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/stylesheetIcons.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1232">
+              <caret line="56" column="12" lean-forward="true" selection-start-line="56" selection-start-column="12" selection-end-line="56" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RootLayout.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/RootLayout.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="21" column="24" lean-forward="false" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
           </provider>
         </entry>
       </file>
@@ -176,7 +201,7 @@
       <file leaf-file-name="DragIcon.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/graphics_controls/DragIcon.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
+            <state relative-caret-position="88">
               <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
               <folding />
             </state>
@@ -245,11 +270,11 @@
         <option value="$PROJECT_DIR$/src/main/resources/RootLayout.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/graphics_controls/RootLayout.java" />
         <option value="$PROJECT_DIR$/src/main/resources/DraggableGate.fxml" />
-        <option value="$PROJECT_DIR$/src/main/resources/stylesheetIcons.css" />
         <option value="$PROJECT_DIR$/src/main/java/code/LogicGate.java" />
         <option value="$PROJECT_DIR$/src/main/java/graphics_controls/DraggableGate.java" />
         <option value="$PROJECT_DIR$/src/main/java/graphics_controls/Link.java" />
         <option value="$PROJECT_DIR$/src/main/java/code/LogicCircuit.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/stylesheetIcons.css" />
       </list>
     </option>
   </component>
@@ -268,10 +293,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2869" />
+    <option name="x" value="85" />
     <option name="y" value="-11" />
-    <option name="width" value="2902" />
-    <option name="height" value="1582" />
+    <option name="width" value="1846" />
+    <option name="height" value="1102" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -294,10 +319,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -346,10 +367,22 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="UI" type="b2602c69:ProjectViewProjectNode" />
+              <item name="UI" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="Gate_Symbols" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -535,12 +568,13 @@
       <workItem from="1553039936388" duration="5067000" />
       <workItem from="1553092543426" duration="2634000" />
       <workItem from="1553116200303" duration="8064000" />
-      <workItem from="1553128348483" duration="5934000" />
+      <workItem from="1553128348483" duration="5979000" />
+      <workItem from="1553201519021" duration="1347000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171736000" />
+    <option name="totallyTimeSpent" value="173128000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -552,11 +586,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="2869" y="-11" width="2902" height="1582" extended-state="6" />
+    <frame x="85" y="-11" width="1846" height="1102" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3282498" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32887402" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17837235" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -564,11 +598,11 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2832244" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2831661" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13594306" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2041049" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3282498" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -701,11 +735,11 @@
         <state relative-caret-position="3725">
           <caret line="149" column="13" lean-forward="true" selection-start-line="149" selection-start-column="13" selection-end-line="149" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3179#3180#0" expanded="true" />
-            <element signature="e#3206#3207#0" expanded="true" />
-            <element signature="e#3246#3247#0" expanded="true" />
-            <element signature="e#3276#3277#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#3179#3180#0" expanded="false" />
+            <element signature="e#3206#3207#0" expanded="false" />
+            <element signature="e#3246#3247#0" expanded="false" />
+            <element signature="e#3276#3277#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -722,11 +756,11 @@
         <state relative-caret-position="2950">
           <caret line="118" column="32" lean-forward="true" selection-start-line="118" selection-start-column="32" selection-end-line="118" selection-end-column="32" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3179#3180#0" expanded="true" />
-            <element signature="e#3206#3207#0" expanded="true" />
-            <element signature="e#3246#3247#0" expanded="true" />
-            <element signature="e#3276#3277#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#3179#3180#0" expanded="false" />
+            <element signature="e#3206#3207#0" expanded="false" />
+            <element signature="e#3246#3247#0" expanded="false" />
+            <element signature="e#3276#3277#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -838,9 +872,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="980" column="0" lean-forward="false" selection-start-line="980" selection-start-column="0" selection-end-line="980" selection-end-column="0" />
-          <folding>
-            <element signature="e#42618#42619#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -954,28 +985,9 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/stylesheetIcons.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="811">
-          <caret line="67" column="0" lean-forward="true" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/RootLayout.fxml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="21" column="24" lean-forward="false" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/graphics_controls/DragIcon.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
+        <state relative-caret-position="88">
           <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
           <folding />
         </state>
@@ -986,19 +998,19 @@
         <state relative-caret-position="-3646">
           <caret line="29" column="9" lean-forward="true" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3179#3180#0" expanded="true" />
-            <element signature="e#3206#3207#0" expanded="true" />
-            <element signature="e#3246#3247#0" expanded="true" />
-            <element signature="e#3276#3277#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#3179#3180#0" expanded="false" />
+            <element signature="e#3206#3207#0" expanded="false" />
+            <element signature="e#3246#3247#0" expanded="false" />
+            <element signature="e#3276#3277#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/graphics_controls/DraggableGate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="548">
-          <caret line="178" column="46" lean-forward="true" selection-start-line="178" selection-start-column="46" selection-end-line="178" selection-end-column="46" />
+        <state relative-caret-position="3388">
+          <caret line="178" column="46" lean-forward="false" selection-start-line="178" selection-start-column="46" selection-end-line="178" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2581#2582#0" expanded="true" />
@@ -1013,8 +1025,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/code/LogicGate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1069">
-          <caret line="98" column="57" lean-forward="true" selection-start-line="98" selection-start-column="57" selection-end-line="98" selection-end-column="57" />
+        <state relative-caret-position="1672">
+          <caret line="98" column="57" lean-forward="false" selection-start-line="98" selection-start-column="57" selection-end-line="98" selection-end-column="57" />
           <folding>
             <element signature="e#497#498#0" expanded="true" />
             <element signature="e#528#529#0" expanded="true" />
@@ -1050,21 +1062,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/RootLayout.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="21" column="24" lean-forward="false" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/code/LogicCircuit.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state relative-caret-position="462">
+          <caret line="24" column="24" lean-forward="true" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#795#796#0" expanded="true" />
-            <element signature="e#824#825#0" expanded="true" />
-            <element signature="e#865#866#0" expanded="true" />
-            <element signature="e#901#902#0" expanded="true" />
-            <element signature="e#940#941#0" expanded="true" />
-            <element signature="e#970#971#0" expanded="true" />
-            <element signature="e#1013#1014#0" expanded="true" />
-            <element signature="e#1051#1052#0" expanded="true" />
+            <element signature="e#803#804#0" expanded="true" />
+            <element signature="e#832#833#0" expanded="true" />
+            <element signature="e#873#874#0" expanded="true" />
+            <element signature="e#909#910#0" expanded="true" />
+            <element signature="e#948#949#0" expanded="true" />
+            <element signature="e#978#979#0" expanded="true" />
+            <element signature="e#1021#1022#0" expanded="true" />
+            <element signature="e#1059#1060#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/stylesheetIcons.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1232">
+          <caret line="56" column="12" lean-forward="true" selection-start-line="56" selection-start-column="12" selection-end-line="56" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
