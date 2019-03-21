@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SplitPane;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
@@ -35,7 +36,12 @@ public class RootLayout extends AnchorPane {
     private Button button_truthTable = null;
     @FXML
     private Button button_failure = null;
+    @FXML
+    private ScrollPane sc = null;
+    @FXML
+    private AnchorPane base_right_pane;
 
+    //todo scroll and zoom
 
     private DragIcon dragOverIcon = null;
 
@@ -46,6 +52,7 @@ public class RootLayout extends AnchorPane {
     private LogicCircuit circuit = null;
 
     public RootLayout() {
+
 
         FXMLLoader fxmlLoader = new FXMLLoader(
                 getClass().getResource("/RootLayout.fxml")
@@ -69,6 +76,13 @@ public class RootLayout extends AnchorPane {
         setTopAnchor(right_box, 0.0);
         setRightAnchor(right_box, 0.0);
         setBottomAnchor(right_box, 0.0);
+        
+
+        base_right_pane.setTopAnchor(sc, 0.0);
+        base_right_pane.setBottomAnchor(sc, 0.0);
+        base_right_pane.setLeftAnchor(sc, 0.0);
+        base_right_pane.setRightAnchor(sc, 0.0);
+
 
         dragOverIcon = new DragIcon();
         dragOverIcon.setVisible(false);
@@ -87,6 +101,7 @@ public class RootLayout extends AnchorPane {
         buildDragHandlers();
         buttonTable();
         buttonFailure();
+
     }
 
     public void buttonTable() {
@@ -155,6 +170,8 @@ public class RootLayout extends AnchorPane {
 
                 right_pane.removeEventHandler(DragEvent.DRAG_OVER, iconDragOverRightPaneHandler);
                 right_pane.removeEventHandler(DragEvent.DRAG_DROPPED, iconDragDroppedHandler);
+                right_pane.getParent().removeEventHandler(DragEvent.DRAG_OVER, iconDragOverRightPaneHandler);
+                right_pane.getParent().removeEventHandler(DragEvent.DRAG_DROPPED, iconDragDroppedHandler);
                 base_pane.removeEventHandler(DragEvent.DRAG_OVER, iconDragOverRootHandler);
 
                 dragOverIcon.setVisible(false);
@@ -241,8 +258,13 @@ public class RootLayout extends AnchorPane {
             public void handle(MouseEvent event) {
                 // set the other drag event handles on their respective objects
                 base_pane.setOnDragOver(iconDragOverRootHandler);
+
+                right_pane.getParent().setOnDragOver(iconDragOverRightPaneHandler);
                 right_pane.setOnDragOver(iconDragOverRightPaneHandler);
+
+                right_pane.getParent().setOnDragDropped(iconDragDroppedHandler);
                 right_pane.setOnDragDropped(iconDragDroppedHandler);
+
 
                 //get a reference to the clicked DragIcon object
                 DragIcon icon = (DragIcon) event.getSource();
