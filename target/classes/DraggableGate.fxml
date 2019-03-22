@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root fx:id="root_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="96" prefWidth="80.0" styleClass="dragicon" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="root_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="60.0" styleClass="dragicon" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox fx:id="vBox" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <GridPane fx:id="gate_top_menu" styleClass="node-overlay">
+            <GridPane fx:id="gate_top_menu" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" styleClass="node-overlay">
               <columnConstraints>
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
                 <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="25.0" />
@@ -36,7 +36,7 @@
                      </GridPane.margin></Label>
                </children>
             </GridPane>
-            <HBox fx:id="hBox" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="66.0">
+            <HBox fx:id="hBox" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="45.0">
                <children>
                   <AnchorPane fx:id="left_link_handle" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="25.0" styleClass="left-link-handle" />
                   <AnchorPane fx:id="node_body" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" />

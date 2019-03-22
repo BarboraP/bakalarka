@@ -4,15 +4,15 @@
 
 .and {
     -fx-background-color: #f4f4f4;
-
+    -fx-background-image: url(Symbols/AND.png);
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center center;
 }
 
 .or {
-    -fx-background-color: #f4f4f4;
 
+    -fx-background-image: url(Symbols/OR.png);
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center center;
@@ -20,23 +20,21 @@
 
 .nand {
     -fx-background-color: #f4f4f4;
-
+    -fx-background-image: url(Symbols/NAND.png);
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center center;
 }
 
 .nor {
-    -fx-background-color: #f4f4f4;
-
+    -fx-background-image: url(Symbols/NOR.png);
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center center;
 }
 
 .xor {
-    -fx-background-color: #f4f4f4;
-    
+    -fx-background-image: url(Symbols/XOR.png);
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center center;

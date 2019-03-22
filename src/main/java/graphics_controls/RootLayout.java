@@ -313,6 +313,7 @@ public class RootLayout extends AnchorPane {
         icon.getStyleClass().clear();
         icon.getStyleClass().add("dragicon");
         icon.getStyleClass().add(getStyle(type));
+
     }
 
     private void setStyleGate(GateType type, DraggableGate gate) {
@@ -323,5 +324,6 @@ public class RootLayout extends AnchorPane {
         if (getStyle(type) == "input") {
             gate.setAsInput();
         }
+        gate.setLabel(getStyle(type));
     }
 }

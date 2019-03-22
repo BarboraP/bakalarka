@@ -105,10 +105,11 @@ public class DraggableGate extends AnchorPane {
                 right_pane = (AnchorPane) getParent();
             }
         });
-
-
     }
 
+    public void setLabel(String a) {
+        title_bar.setText(a);
+    }
 
     public void relocateToPoint(Point2D p) {
         //relocates the object to a point that has been converted to scene coordinates
