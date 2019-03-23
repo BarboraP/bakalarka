@@ -16,6 +16,7 @@ import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -42,6 +43,8 @@ public class DraggableGate extends AnchorPane {
     private HBox hBox = null;
     @FXML
     private VBox vBox = null;
+    @FXML
+    private GridPane gate_top_menu = null;
 
     private EventHandler<DragEvent> contextDragOverHandler;
     private EventHandler<DragEvent> contextDragDroppedHandler;
@@ -306,7 +309,8 @@ public class DraggableGate extends AnchorPane {
         title_bar.setText(" ");
         left_link_handle.setPrefSize(0, 0);
         node_body.setPrefSize(0, 0);
-        right_link_handle.setPrefSize(30, 22);
+        right_link_handle.setPrefSize(30, 28);
+        gate_top_menu.setPrefSize(30,10);
         hBox.setPrefSize(30, 22);
         vBox.setPrefSize(30, 32);
         root_pane.setPrefHeight(32.0);
