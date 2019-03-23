@@ -6,6 +6,9 @@ public class Nand_Gate extends LogicGate {
     }
 
     public boolean getResult(boolean y1, boolean y2) {
-        return (!(y1 & y2));
+        if(isWorking()) {
+            return (!(y1 & y2));
+        }
+        return getResultFailure();
     }
 }

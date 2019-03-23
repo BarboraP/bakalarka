@@ -14,10 +14,10 @@ public class LogicCircuit {
     private int rows;
     private ArrayList<LogicGate> inputList;
     private boolean[][] failureTable;
+    private int fRows;
 
     //todo saving and loading data //json?
-    //todo define failure function by table
-    //todo results with failure calculation
+    //todo test failure table computing
     //todo reliability analysis
 
     public LogicCircuit() {
@@ -104,7 +104,7 @@ public class LogicCircuit {
             }
         }
 
-        this.eval();
+        this.evalTrueTable();
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
@@ -146,7 +146,7 @@ public class LogicCircuit {
         return ids;
     }
 
-    private boolean computeOutput(LogicGate gate, int row) {
+    private boolean computeOutput(LogicGate gate, int row, boolean[][] table) {
 
         boolean output1 = true;
         boolean output2 = true;
@@ -160,33 +160,52 @@ public class LogicCircuit {
             if (inputIndex == -1) {
 
                 if (connection == 0) {
-                    output1 = computeOutput(input, row);
+                    output1 = computeOutput(input, row, table);
                 } else {
-                    output2 = computeOutput(input, row);
+                    output2 = computeOutput(input, row, table);
                 }
 
             } else {
                 if (connection == 0) {
-                    output1 = truthTable[row][inputIndex];
+                    output1 = table[row][inputIndex];
                 } else {
-                    output2 = truthTable[row][inputIndex];
+                    output2 = table[row][inputIndex];
                 }
             }
         }
         return gate.getResult(output1, output2);
     }
 
-    public void eval() {
+    public void evalTrueTable() {
+
+        for (LogicGate g : gates) {
+            g.setWorking(true);
+        }
         for (int row = 0; row < rows; row++) {
 
             for (int gate = 0; gate < outputList.size(); gate++) {
 
                 LogicGate output = outputList.get(gate);
-                boolean a = this.computeOutput(output, row);
-                truthTable[row][gate + inputs] = a;
+                boolean result = this.computeOutput(output, row, truthTable);
+                truthTable[row][gate + inputs] = result;
             }
         }
     }
+
+    public void evalFailureTable() {
+        for (int i = 0; i < fRows; i++) {
+            for (int j = 0; j < gates.size(); j++) {
+                gates.get(j).setWorking(failureTable[i][inputs + j]);
+            }
+
+            for (int gate = 0; gate < outputList.size(); gate++) {
+                LogicGate output = outputList.get(gate);
+                boolean result = this.computeOutput(output, i, failureTable);
+                failureTable[i][gate + inputs + gates.size()] = result;
+            }
+        }
+    }
+
 
     public void getFailureTable() {
         if (truthTable == null) {
@@ -194,7 +213,7 @@ public class LogicCircuit {
         }
         //sets dimensions for table
         int failureRows = (int) Math.pow(2, gates.size());
-        int fRows = rows * failureRows;
+        fRows = rows * failureRows;
         int fColumns = gates.size() + outputs + inputs;//outputs and inputs are also in gatesList i think
 
         failureTable = new boolean[fRows][fColumns];
@@ -213,6 +232,9 @@ public class LogicCircuit {
                 }
             }
         }
+
+        evalFailureTable();
+
 
 
         for (int i = 0; i < fRows; i++) {
