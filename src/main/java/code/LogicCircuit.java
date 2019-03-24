@@ -19,6 +19,8 @@ public class LogicCircuit {
     //todo saving and loading data //json?
     //todo test failure table computing
     //todo reliability analysis
+    //todo fix nand and nor
+
 
     public LogicCircuit() {
         this.gates = new ArrayList<>();

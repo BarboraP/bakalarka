@@ -10,6 +10,7 @@ public abstract class LogicGate {
     private final String id;
     private int outputId;
     protected LogicCircuit circuit = null;
+    private boolean customFunction[][]; // todo user defines this
 
 
     public LogicGate(String pid, LogicCircuit c) {
@@ -100,4 +101,9 @@ public abstract class LogicGate {
         }
         return list;
     }
+
+    public void defineCustomFunction(){
+        //todo get table from gui and copy to customF
+    }
 }
+
