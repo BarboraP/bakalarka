@@ -81,7 +81,7 @@ public class LogicCircuit {
 
     public void loadOutputGates() {
         for (LogicGate g : gates) {
-            if (g.getOutput() == null) {
+            if (g.getOutput().getEndGate() == null) {
                 g.setOutputId(outputs);
                 outputList.add(g);
                 outputs++;

@@ -2,7 +2,7 @@ package graphics_controls;
 
 
 public enum GateType {
-    and, or, nand, nor, xor, input
+    and, or, nand, nor, xor, input, output
 }
 
 

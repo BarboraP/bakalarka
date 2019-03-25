@@ -87,7 +87,7 @@ public class RootLayout extends AnchorPane {
 
         //populate left pane with multiple colored icons for testing
         //this is where we will add gates types
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < GateType.values().length; i++) {
             DragIcon icn = new DragIcon();
             setStyleIcon(GateType.values()[i], icn);
             addDragDetection(icn);
@@ -227,11 +227,17 @@ public class RootLayout extends AnchorPane {
                             LogicGate sourceGate = circuit.getGateById(sourceId);
                             LogicGate targetGate = circuit.getGateById(targetId);
                             Connector connector = new Connector(sourceGate, targetGate, link.getId());
+                            
 
-                            if (circuit.getGateById(targetId).addInputConnector(connector)) {
+                            if (targetGate == null) {
+                                link.bindEnds(source, target);
+                                sourceGate.setOutput(connector);
+                            } else {
+                                circuit.getGateById(targetId).addInputConnector(connector);
                                 link.bindEnds(source, target);
                                 sourceGate.setOutput(connector);
                             }
+
                         }
                     }
                 }
@@ -301,6 +307,8 @@ public class RootLayout extends AnchorPane {
             case input:
                 result = "input";
                 break;
+            case output:
+                result = "output";
 
             default:
                 break;
@@ -321,7 +329,7 @@ public class RootLayout extends AnchorPane {
         gate.getStyleClass().clear();
         gate.getStyleClass().add("dragicon");
         gate.getStyleClass().add(getStyle(type));
-        if (getStyle(type) == "input") {
+        if (getStyle(type) == "input" || getStyle(type) == "output") {
             gate.setAsInput();
         }
         gate.setLabel(getStyle(type));
