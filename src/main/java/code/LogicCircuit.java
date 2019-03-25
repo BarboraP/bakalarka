@@ -89,6 +89,14 @@ public class LogicCircuit {
         }
     }
 
+    public boolean[][] returnCompleteTable(){
+        return failureTable;
+    }
+
+    public boolean[][] returnTruthTable() {
+        return truthTable;
+    }
+
     public void getTruthTable() {
         loadOutputGates();
         rows = (int) Math.pow(2, inputs);
@@ -115,6 +123,8 @@ public class LogicCircuit {
             System.out.println();
         }
     }
+
+
 
     public LogicGate getGateById(String id) {
         for (LogicGate g : gates) {

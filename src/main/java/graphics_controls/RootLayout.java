@@ -8,6 +8,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SplitPane;
@@ -18,6 +19,8 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.geometry.Point2D;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -103,7 +106,32 @@ public class RootLayout extends AnchorPane {
     public void buttonTable() {
         button_truthTable.setOnAction((event) -> {
             circuit.getTruthTable();
+            circuit.getFailureTable();
+
+            Stage tabs = new Stage();
+
+            if (tabs.isShowing()) {
+                tabs.hide();
+            }
+
+            tabs = new Stage();
+            ReliabilityAnalysis ra = new ReliabilityAnalysis();
+            ra.setTruthTable(circuit.returnTruthTable());
+            ra.setCompTable(circuit.returnCompleteTable());
+
+
+            ra.initTable(ra.getTableComp(), ra.getTable_comp());
+            ra.initTable(ra.getTableTruth(), ra.getTable_truth());
+
+            tabs.setScene(new Scene(ra));
+
+            tabs.initModality(Modality.WINDOW_MODAL);
+            tabs.initOwner(this.getScene().getWindow());
+            tabs.show();
+
         });
+
+
     }
 
     public void buttonFailure() {
@@ -227,7 +255,6 @@ public class RootLayout extends AnchorPane {
                             LogicGate sourceGate = circuit.getGateById(sourceId);
                             LogicGate targetGate = circuit.getGateById(targetId);
                             Connector connector = new Connector(sourceGate, targetGate, link.getId());
-                            
 
                             if (targetGate == null) {
                                 link.bindEnds(source, target);
@@ -237,7 +264,6 @@ public class RootLayout extends AnchorPane {
                                 link.bindEnds(source, target);
                                 sourceGate.setOutput(connector);
                             }
-
                         }
                     }
                 }
