@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/graphics_controls/DefineFailure.java" afterPath="$PROJECT_DIR$/src/main/java/graphics_controls/DefineFailure.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/code/LogicCircuit.java" afterPath="$PROJECT_DIR$/src/main/java/code/LogicCircuit.java" />
+      <change beforePath="$PROJECT_DIR$/target/classes/graphics_controls/DefineFailure$1.class" afterPath="$PROJECT_DIR$/target/classes/graphics_controls/DefineFailure$1.class" />
       <change beforePath="$PROJECT_DIR$/target/classes/graphics_controls/DefineFailure.class" afterPath="$PROJECT_DIR$/target/classes/graphics_controls/DefineFailure.class" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -68,11 +69,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="DefineFailure.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DefineFailure.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/graphics_controls/DefineFailure.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="827">
-              <caret line="112" column="48" lean-forward="true" selection-start-line="112" selection-start-column="48" selection-end-line="112" selection-end-column="48" />
+            <state relative-caret-position="677">
+              <caret line="128" column="0" lean-forward="true" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1367#1368#0" expanded="true" />
@@ -82,11 +83,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LogicCircuit.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LogicCircuit.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/code/LogicCircuit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="518">
-              <caret line="237" column="83" lean-forward="false" selection-start-line="237" selection-start-column="16" selection-end-line="237" selection-end-column="83" />
+            <state relative-caret-position="509">
+              <caret line="29" column="27" lean-forward="true" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -95,28 +96,13 @@
       <file leaf-file-name="LogicGate.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/code/LogicGate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1958">
-              <caret line="115" column="1" lean-forward="false" selection-start-line="115" selection-start-column="1" selection-end-line="115" selection-end-column="1" />
+            <state relative-caret-position="122">
+              <caret line="91" column="3" lean-forward="true" selection-start-line="91" selection-start-column="3" selection-end-line="91" selection-end-column="3" />
               <folding>
                 <element signature="e#2641#2642#0" expanded="true" />
                 <element signature="e#2677#2678#0" expanded="true" />
                 <element signature="e#2708#2709#0" expanded="true" />
                 <element signature="e#2733#2734#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RootLayout.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/graphics_controls/RootLayout.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2596">
-              <caret line="139" column="33" lean-forward="false" selection-start-line="139" selection-start-column="33" selection-end-line="139" selection-end-column="33" />
-              <folding>
-                <element signature="e#4210#4211#0" expanded="true" />
-                <element signature="e#4237#4238#0" expanded="true" />
-                <element signature="e#4277#4278#0" expanded="true" />
-                <element signature="e#4307#4308#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -193,8 +179,8 @@
         <option value="$PROJECT_DIR$/src/main/java/code/Or_Gate.java" />
         <option value="$PROJECT_DIR$/src/main/java/code/Xor_Gate.java" />
         <option value="$PROJECT_DIR$/src/main/java/code/LogicGate.java" />
-        <option value="$PROJECT_DIR$/src/main/java/code/LogicCircuit.java" />
         <option value="$PROJECT_DIR$/src/main/java/graphics_controls/DefineFailure.java" />
+        <option value="$PROJECT_DIR$/src/main/java/code/LogicCircuit.java" />
       </list>
     </option>
   </component>
@@ -506,12 +492,12 @@
       <workItem from="1553635539852" duration="6246000" />
       <workItem from="1553642205776" duration="6375000" />
       <workItem from="1553692838141" duration="6737000" />
-      <workItem from="1553701855600" duration="3665000" />
+      <workItem from="1553701855600" duration="7525000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="229648000" />
+    <option name="totallyTimeSpent" value="233508000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -535,7 +521,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36456063" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36456063" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -573,20 +559,13 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/code/LogicCircuit.java</url>
-          <line>263</line>
-          <properties />
-          <option name="timeStamp" value="78" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="86" />
+      <option name="time" value="89" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="circuit" />
         <watch expression="inputs" language="JAVA" />
+        <watch expression="table_edit" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
@@ -899,19 +878,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/graphics_controls/RootLayout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2596">
-          <caret line="139" column="33" lean-forward="false" selection-start-line="139" selection-start-column="33" selection-end-line="139" selection-end-column="33" />
-          <folding>
-            <element signature="e#4210#4211#0" expanded="true" />
-            <element signature="e#4237#4238#0" expanded="true" />
-            <element signature="e#4277#4278#0" expanded="true" />
-            <element signature="e#4307#4308#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/DefineFailure.fxml">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -978,10 +944,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/graphics_controls/RootLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="924">
+          <caret line="146" column="0" lean-forward="false" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
+          <folding>
+            <element signature="e#4210#4211#0" expanded="true" />
+            <element signature="e#4237#4238#0" expanded="true" />
+            <element signature="e#4277#4278#0" expanded="true" />
+            <element signature="e#4307#4308#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/code/LogicGate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1958">
-          <caret line="115" column="1" lean-forward="false" selection-start-line="115" selection-start-column="1" selection-end-line="115" selection-end-column="1" />
+        <state relative-caret-position="122">
+          <caret line="91" column="3" lean-forward="true" selection-start-line="91" selection-start-column="3" selection-end-line="91" selection-end-column="3" />
           <folding>
             <element signature="e#2641#2642#0" expanded="true" />
             <element signature="e#2677#2678#0" expanded="true" />
@@ -991,23 +970,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/code/LogicCircuit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="237" column="83" lean-forward="false" selection-start-line="237" selection-start-column="16" selection-end-line="237" selection-end-column="83" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/graphics_controls/DefineFailure.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="827">
-          <caret line="112" column="48" lean-forward="true" selection-start-line="112" selection-start-column="48" selection-end-line="112" selection-end-column="48" />
+        <state relative-caret-position="677">
+          <caret line="128" column="0" lean-forward="true" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1367#1368#0" expanded="true" />
             <element signature="e#1394#1395#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/code/LogicCircuit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="509">
+          <caret line="29" column="27" lean-forward="true" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>

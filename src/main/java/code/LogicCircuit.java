@@ -17,9 +17,14 @@ public class LogicCircuit {
     private int fRows;
 
     //todo saving and loading data //json?
-    //todo test failure table computing
     //todo reliability analysis
-    //todo fix nand and nor
+    /*
+    * structure funct: compare 2^gate.size rows from failure table with truth table row
+    * count matches
+    * matches/failureRows *100 == reliability percentage
+    * */
+
+
 
 
     public LogicCircuit() {
@@ -217,7 +222,6 @@ public class LogicCircuit {
             }
         }
     }
-
 
     public void getFailureTable() {
         if (truthTable == null) {
