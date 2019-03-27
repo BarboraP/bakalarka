@@ -1,6 +1,5 @@
 package code;
 
-import java.util.UUID;
 
 public class Or_Gate extends LogicGate {
     public Or_Gate(String pid, LogicCircuit c) {
@@ -11,6 +10,10 @@ public class Or_Gate extends LogicGate {
         if (isWorking()) {
             return (y1 | y2);
         }
-        return getResultFailure();
+        return getResultFailure(y1,y2);
+    }
+
+    public String getType() {
+        return "or";
     }
 }

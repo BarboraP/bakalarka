@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <fx:root fx:id="root_pane" minHeight="380.0" minWidth="540.0" stylesheets="stylesheetIcons.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TabPane prefHeight="380.0" prefWidth="540.0" tabClosingPolicy="UNAVAILABLE">

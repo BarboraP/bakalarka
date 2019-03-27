@@ -10,6 +10,10 @@ public class And_Gate extends LogicGate {
         if (isWorking()) {
             return (y1 & y2);
         }
-        return getResultFailure();
+        return getResultFailure(y1,y2);
+    }
+
+    public String getType() {
+        return "and";
     }
 }

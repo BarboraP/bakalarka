@@ -72,8 +72,12 @@ public abstract class LogicGate {
         return -1;
     }
 
-    public boolean getResultFailure() {
-        //TODO let user define failure state of each type of gate
+    public boolean getResultFailure(boolean y1, boolean y2) {
+        for (int i = 0; i < customFunction.length; i++) {
+            if (customFunction[i][0] == y1 && customFunction[i][1] == y2) {
+                return customFunction[i][2];
+            }
+        }
         return false;
     }
 
@@ -102,8 +106,12 @@ public abstract class LogicGate {
         return list;
     }
 
-    public void defineCustomFunction(){
-        //todo get table from gui and copy to customF
+    public void defineCustomFunction(boolean[][] tab) {
+        customFunction = tab;
+    }
+
+    public String getType() {
+        return "";
     }
 }
 

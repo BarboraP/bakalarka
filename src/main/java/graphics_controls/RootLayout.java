@@ -38,7 +38,7 @@ public class RootLayout extends AnchorPane {
     @FXML
     private Button button_truthTable = null;
     @FXML
-    private Button button_failure = null;
+    private Button button_define_failure = null;
     @FXML
     private ScrollPane sc = null;
     @FXML
@@ -110,10 +110,6 @@ public class RootLayout extends AnchorPane {
 
             Stage tabs = new Stage();
 
-            if (tabs.isShowing()) {
-                tabs.hide();
-            }
-
             tabs = new Stage();
             ReliabilityAnalysis ra = new ReliabilityAnalysis();
             ra.setTruthTable(circuit.returnTruthTable());
@@ -136,8 +132,18 @@ public class RootLayout extends AnchorPane {
 
     public void buttonFailure() {
 
-        button_failure.setOnAction((event) -> {
-            circuit.getFailureTable();
+        button_define_failure.setOnAction((event) -> {
+            Stage edit = new Stage();
+
+            edit = new Stage();
+            DefineFailure ra = new DefineFailure();
+            ra.setCircuit(circuit);
+
+            edit.setScene(new Scene(ra));
+
+            edit.initModality(Modality.WINDOW_MODAL);
+            edit.initOwner(this.getScene().getWindow());
+            edit.show();
         });
 
     }

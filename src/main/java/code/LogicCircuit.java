@@ -256,4 +256,14 @@ public class LogicCircuit {
             System.out.println();
         }
     }
+
+
+    public void setFailure(String type, boolean[][] table) {
+        for (LogicGate g : gates) {
+            if(g.getType().equals(type)) {
+                g.defineCustomFunction(table);
+                System.out.println("");
+            }
+        }
+    }
 }

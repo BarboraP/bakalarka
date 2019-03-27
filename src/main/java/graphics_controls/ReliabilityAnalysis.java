@@ -96,7 +96,6 @@ public class ReliabilityAnalysis extends AnchorPane {
 
     public void initTable(Boolean[][] table, TableView<Boolean[]> view) {
         ObservableList<Boolean[]> data = FXCollections.observableArrayList();
-//        List<Boolean[]> list = Arrays.asList(table);
         data.addAll(Arrays.asList(table));
 
         for (int i = 0; i < table[0].length; i++) {

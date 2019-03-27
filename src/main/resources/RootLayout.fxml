@@ -27,7 +27,7 @@
               <VBox fx:id="right_box" alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="110.0">
                   <children>
                       <Button fx:id="button_truthTable" maxWidth="110.0" mnemonicParsing="false" prefWidth="110.0" text="Show reliability analysis" wrapText="true" />
-                      <Button fx:id="button_failure" maxWidth="110.0" mnemonicParsing="false" prefWidth="110.0" text="Compute Failure Table" wrapText="true" />
+                      <Button fx:id="button_define_failure" maxWidth="110.0" mnemonicParsing="false" prefWidth="110.0" text="Define failure function" wrapText="true" />
                   </children>
               </VBox>
 
