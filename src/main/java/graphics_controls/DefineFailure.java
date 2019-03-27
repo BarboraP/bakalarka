@@ -1,17 +1,18 @@
 package graphics_controls;
 
 import code.LogicCircuit;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class DefineFailure extends AnchorPane {
     @FXML
     private ComboBox<String> combo_gate_type = null;
     @FXML
-    private TableView<Boolean> table_edit = null;
+    private TableView<boolean[]> table_edit = null;
     @FXML
     private Button button_save = null;
 
@@ -55,18 +56,44 @@ public class DefineFailure extends AnchorPane {
 
     public void initTable() {
 
+        final ObservableList<boolean[]> data = FXCollections.observableArrayList(
+                new boolean[3],
+                new boolean[3],
+                new boolean[3],
+                new boolean[3]
+        );
+
+        for (boolean[] d : data) {
+            for (int i = 0; i < 3; i++) {
+                d[i] = false;
+            }
+        }
+
+        table_edit.setEditable(true);
+        table_edit.setFixedCellSize(25);
+
         for (int i = 0; i < 3; i++) {
             TableColumn column = new TableColumn();
+
+            column.setCellValueFactory(new PropertyValueFactory<boolean[], String>(""));
+            column.setCellFactory(TextFieldTableCell.forTableColumn());
+            column.setOnEditCommit(
+                    new EventHandler<TableColumn.CellEditEvent<boolean[], String>>() {
+                        @Override
+                        public void handle(TableColumn.CellEditEvent<boolean[], String> event) {
+
+                            boolean[] user = event.getRowValue();
+                            user[event.getTablePosition().getColumn()] = Boolean.parseBoolean(event.getNewValue());
+                        }
+                    }
+            );
+
+            table_edit.setItems(data);
             table_edit.getColumns().add(column);
-            column.setCellValueFactory(c -> new SimpleStringProperty("false"));
-            column.setCellFactory(TextFieldTableCell.<Boolean>forTableColumn());
         }
-        table_edit.getItems().addAll(false, false, false, false);
-        table_edit.setFixedCellSize(25);
     }
 
     public void setItemsInCombo() {
-
         ArrayList<String> list = new ArrayList<>();
         GateType[] g = GateType.values();
         for (int i = 0; i < g.length - 2; i++) {
@@ -77,37 +104,24 @@ public class DefineFailure extends AnchorPane {
 
 
     public void buttonFailure() {
-
         button_save.setOnAction((event) -> {
-
             String type = combo_gate_type.getValue();
             circuit.setFailure(type, convertToTable(getDataFromTable()));
-
-            System.out.println("swds");
         });
-
     }
 
-    private List<String> getDataFromTable() {
-        ObservableList<TableColumn<Boolean, ?>> columns = table_edit.getColumns();
-        List<String> columnData = new ArrayList<>();
-
-        for (TableColumn column : columns) {
-            for (Boolean item : table_edit.getItems()) {
-                columnData.add(column.getCellObservableValue(item).getValue().toString());
-            }
+    private List<boolean[]> getDataFromTable() {
+        List<boolean[]> columnData = new ArrayList<>();
+        for (boolean[] item : table_edit.getItems()) {
+            columnData.add(item);
         }
         return columnData;
     }
 
-    private boolean[][] convertToTable(List<String> columnData) {
+    private boolean[][] convertToTable(List<boolean[]> columnData) {
         boolean[][] list = new boolean[4][3];
         for (int i = 0; i < 4; i++) {
-            int a = i * 3;
-            for (int j = 0; j < 3; j++) {
-                list[i][j] = Boolean.parseBoolean(columnData.get(j + a));
-            }
-
+            list[i] = columnData.get(i);
         }
         return list;
     }
