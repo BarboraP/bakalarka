@@ -73,11 +73,15 @@ public abstract class LogicGate {
     }
 
     public boolean getResultFailure(boolean y1, boolean y2) {
-        for (int i = 0; i < customFunction.length; i++) {
-            if (customFunction[i][0] == y1 && customFunction[i][1] == y2) {
-                return customFunction[i][2];
-            }
-        }
+       if(customFunction != null) {
+
+
+           for (int i = 0; i < customFunction.length; i++) {
+               if (customFunction[i][0] == y1 && customFunction[i][1] == y2) {
+                   return customFunction[i][2];
+               }
+           }
+       }
         return false;
     }
 

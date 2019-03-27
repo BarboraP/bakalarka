@@ -10,27 +10,27 @@ public class LogicCircuit {
     private ArrayList<LogicGate> outputList;
     private boolean[][] truthTable;
     private int inputs;
-    private int outputs;
+    //private int outputs;
     private int rows;
     private ArrayList<LogicGate> inputList;
     private boolean[][] failureTable;
     private int fRows;
+    private boolean[][] structF;
 
     //todo saving and loading data //json?
     //todo reliability analysis
+    //todo reloading tables with change
     /*
-    * structure funct: compare 2^gate.size rows from failure table with truth table row
-    * count matches
-    * matches/failureRows *100 == reliability percentage
-    * */
-
-
+     * structure funct: compare 2^gate.size rows from failure table with truth table row
+     * count matches
+     * matches/failureRows *100 == reliability percentage
+     * */
 
 
     public LogicCircuit() {
         this.gates = new ArrayList<>();
         this.inputs = 0;
-        this.outputs = 0;
+        //this.outputs = 0;
         this.rows = 0;
         outputList = new ArrayList<>();
         inputList = new ArrayList<>();
@@ -44,13 +44,7 @@ public class LogicCircuit {
         this.inputs = inputs;
     }
 
-    public int getNumberOfOutputs() {
-        return outputs;
-    }
 
-    public void setOutputs(int outputs) {
-        this.outputs = outputs;
-    }
 
     public void addGate(GateType type, String id) {
         switch (type) {
@@ -86,15 +80,17 @@ public class LogicCircuit {
 
     public void loadOutputGates() {
         for (LogicGate g : gates) {
+            outputList.clear();
+
             if (g.getOutput().getEndGate() == null) {
-                g.setOutputId(outputs);
+                g.setOutputId(outputList.size());
                 outputList.add(g);
-                outputs++;
+                //outputs++;
             }
         }
     }
 
-    public boolean[][] returnCompleteTable(){
+    public boolean[][] returnCompleteTable() {
         return failureTable;
     }
 
@@ -105,7 +101,8 @@ public class LogicCircuit {
     public void getTruthTable() {
         loadOutputGates();
         rows = (int) Math.pow(2, inputs);
-        int columns = inputs + outputs;
+        int columns = inputs + outputList.size();
+
         truthTable = new boolean[rows][columns];
 
         int tmp;
@@ -121,6 +118,7 @@ public class LogicCircuit {
 
         this.evalTrueTable();
 
+
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 System.out.print(truthTable[i][j] + " ");
@@ -128,7 +126,6 @@ public class LogicCircuit {
             System.out.println();
         }
     }
-
 
 
     public LogicGate getGateById(String id) {
@@ -230,7 +227,7 @@ public class LogicCircuit {
         //sets dimensions for table
         int failureRows = (int) Math.pow(2, gates.size());
         fRows = rows * failureRows;
-        int fColumns = gates.size() + outputs + inputs;//outputs and inputs are also in gatesList i think
+        int fColumns = gates.size() + outputList.size() + inputs;//outputs and inputs are also in gatesList i think
 
         failureTable = new boolean[fRows][fColumns];
         int tmp;
@@ -252,22 +249,43 @@ public class LogicCircuit {
         evalFailureTable();
 
 
-
-        for (int i = 0; i < fRows; i++) {
+    /*    for (int i = 0; i < fRows; i++) {
             for (int j = 0; j < fColumns; j++) {
                 System.out.print(failureTable[i][j] + " ");
             }
             System.out.println();
-        }
+        }*/
     }
 
 
     public void setFailure(String type, boolean[][] table) {
         for (LogicGate g : gates) {
-            if(g.getType().equals(type)) {
+            if (g.getType().equals(type)) {
                 g.defineCustomFunction(table);
                 System.out.println("");
             }
         }
     }
+
+    public void getStructFunction() {
+
+        //todo control
+        structF = new boolean[fRows][outputList.size()];
+
+        for (int j = 0; j < fRows; j++) {
+
+            System.arraycopy(failureTable[j], (inputs + gates.size() - outputList.size()), structF[j], 0, outputList.size());
+
+        }
+    }
+
+/*    public double getRel() {
+
+        int failureRows = (int) Math.pow(2, gates.size());
+
+        for() {
+
+        }
+
+    }*/
 }
