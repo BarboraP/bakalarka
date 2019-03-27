@@ -45,7 +45,6 @@ public class LogicCircuit {
     }
 
 
-
     public void addGate(GateType type, String id) {
         switch (type) {
             case and:
@@ -249,12 +248,12 @@ public class LogicCircuit {
         evalFailureTable();
 
 
-    /*    for (int i = 0; i < fRows; i++) {
+        for (int i = 0; i < fRows; i++) {
             for (int j = 0; j < fColumns; j++) {
                 System.out.print(failureTable[i][j] + " ");
             }
             System.out.println();
-        }*/
+        }
     }
 
 
@@ -269,23 +268,29 @@ public class LogicCircuit {
 
     public void getStructFunction() {
 
-        //todo control
         structF = new boolean[fRows][outputList.size()];
 
         for (int j = 0; j < fRows; j++) {
-
-            System.arraycopy(failureTable[j], (inputs + gates.size() - outputList.size()), structF[j], 0, outputList.size());
-
+            System.arraycopy(failureTable[j], (inputs + gates.size()), structF[j], 0, outputList.size());
         }
     }
 
-/*    public double getRel() {
+    public double getRel() {
+
+        getStructFunction();
 
         int failureRows = (int) Math.pow(2, gates.size());
-
-        for() {
-
+        int truths = 0;
+        for (int i = 0; i < rows; i++) {
+            int a = i * failureRows;
+            for (int j = 0; j < failureRows; j++) {
+                for (int k = 0; k < outputList.size(); k++) {
+                    if (structF[j + a][k] == truthTable[i][inputs + k]) {
+                        truths++;
+                    }
+                }
+            }
         }
-
-    }*/
+        return (((double) truths / fRows)) * 100;
+    }
 }

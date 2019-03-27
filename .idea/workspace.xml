@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/code/LogicCircuit.java" afterPath="$PROJECT_DIR$/src/main/java/code/LogicCircuit.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/code/LogicGate.java" afterPath="$PROJECT_DIR$/src/main/java/code/LogicGate.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/graphics_controls/ReliabilityAnalysis.java" afterPath="$PROJECT_DIR$/src/main/java/graphics_controls/ReliabilityAnalysis.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphics_controls/RootLayout.java" afterPath="$PROJECT_DIR$/src/main/java/graphics_controls/RootLayout.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ReliabilityAnalysis.fxml" afterPath="$PROJECT_DIR$/src/main/resources/ReliabilityAnalysis.fxml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -88,11 +84,11 @@
       <file leaf-file-name="LogicCircuit.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/code/LogicCircuit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1866">
-              <caret line="276" column="123" lean-forward="false" selection-start-line="276" selection-start-column="123" selection-end-line="276" selection-end-column="123" />
+            <state relative-caret-position="-641">
+              <caret line="249" column="0" lean-forward="true" selection-start-line="249" selection-start-column="0" selection-end-line="249" selection-end-column="0" />
               <folding>
-                <element signature="e#2286#2287#0" expanded="true" />
-                <element signature="e#2321#2322#0" expanded="true" />
+                <element signature="e#2285#2286#0" expanded="true" />
+                <element signature="e#2320#2321#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -141,7 +137,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/graphics_controls/RootLayout.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="445">
-              <caret line="120" column="14" lean-forward="false" selection-start-line="120" selection-start-column="14" selection-end-line="120" selection-end-column="14" />
+              <caret line="120" column="12" lean-forward="false" selection-start-line="120" selection-start-column="12" selection-end-line="120" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -232,8 +228,8 @@
         <option value="$PROJECT_DIR$/src/main/java/graphics_controls/DefineFailure.java" />
         <option value="$PROJECT_DIR$/src/main/resources/ReliabilityAnalysis.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/graphics_controls/ReliabilityAnalysis.java" />
-        <option value="$PROJECT_DIR$/src/main/java/graphics_controls/RootLayout.java" />
         <option value="$PROJECT_DIR$/src/main/java/code/LogicGate.java" />
+        <option value="$PROJECT_DIR$/src/main/java/graphics_controls/RootLayout.java" />
         <option value="$PROJECT_DIR$/src/main/java/code/LogicCircuit.java" />
       </list>
     </option>
@@ -547,12 +543,12 @@
       <workItem from="1553642205776" duration="6375000" />
       <workItem from="1553692838141" duration="6737000" />
       <workItem from="1553701855600" duration="7572000" />
-      <workItem from="1553719992113" duration="4665000" />
+      <workItem from="1553719992113" duration="7611000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="238220000" />
+    <option name="totallyTimeSpent" value="241166000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -588,7 +584,7 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35221496" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35117057" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -614,7 +610,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="89" />
+      <option name="time" value="91" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1004,14 +1000,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/graphics_controls/RootLayout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="120" column="14" lean-forward="false" selection-start-line="120" selection-start-column="14" selection-end-line="120" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/code/LogicGate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="410">
@@ -1025,13 +1013,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/graphics_controls/RootLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="120" column="12" lean-forward="false" selection-start-line="120" selection-start-column="12" selection-end-line="120" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/code/LogicCircuit.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1866">
-          <caret line="276" column="123" lean-forward="false" selection-start-line="276" selection-start-column="123" selection-end-line="276" selection-end-column="123" />
+        <state relative-caret-position="-641">
+          <caret line="249" column="0" lean-forward="true" selection-start-line="249" selection-start-column="0" selection-end-line="249" selection-end-column="0" />
           <folding>
-            <element signature="e#2286#2287#0" expanded="true" />
-            <element signature="e#2321#2322#0" expanded="true" />
+            <element signature="e#2285#2286#0" expanded="true" />
+            <element signature="e#2320#2321#0" expanded="true" />
           </folding>
         </state>
       </provider>
