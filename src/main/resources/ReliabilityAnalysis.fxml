@@ -40,10 +40,8 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="435.0" prefWidth="640.0">
-                           <content>
-                              <Label fx:id="label_rel" text="Label" />
-                           </content></ScrollPane>
+                        <Label fx:id="label_rel" layoutX="372.0" layoutY="154.0" text="Label" />
+                        <Label layoutX="59.0" layoutY="154.0" text="Reliability of this whole circuit is:" />
                      </children></AnchorPane>
               </content>
             </Tab>

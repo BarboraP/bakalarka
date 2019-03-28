@@ -10,7 +10,6 @@ public class LogicCircuit {
     private ArrayList<LogicGate> outputList;
     private boolean[][] truthTable;
     private int inputs;
-    //private int outputs;
     private int rows;
     private ArrayList<LogicGate> inputList;
     private boolean[][] failureTable;
@@ -18,32 +17,16 @@ public class LogicCircuit {
     private boolean[][] structF;
 
     //todo saving and loading data //json?
-    //todo reliability analysis
-    //todo reloading tables with change
-    /*
-     * structure funct: compare 2^gate.size rows from failure table with truth table row
-     * count matches
-     * matches/failureRows *100 == reliability percentage
-     * */
-
+    //todo reliability analysis for gates
+    //todo removing outputs
 
     public LogicCircuit() {
         this.gates = new ArrayList<>();
         this.inputs = 0;
-        //this.outputs = 0;
         this.rows = 0;
         outputList = new ArrayList<>();
         inputList = new ArrayList<>();
     }
-
-    public int getInputs() {
-        return inputs;
-    }
-
-    public void setInputs(int inputs) {
-        this.inputs = inputs;
-    }
-
 
     public void addGate(GateType type, String id) {
         switch (type) {
@@ -114,9 +97,7 @@ public class LogicCircuit {
                 tmp = tmp >> 1;
             }
         }
-
         this.evalTrueTable();
-
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
@@ -269,7 +250,6 @@ public class LogicCircuit {
     public void getStructFunction() {
 
         structF = new boolean[fRows][outputList.size()];
-
         for (int j = 0; j < fRows; j++) {
             System.arraycopy(failureTable[j], (inputs + gates.size()), structF[j], 0, outputList.size());
         }
