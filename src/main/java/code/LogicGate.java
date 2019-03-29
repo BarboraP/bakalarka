@@ -10,7 +10,7 @@ public abstract class LogicGate {
     private final String id;
     private int outputId;
     protected LogicCircuit circuit = null;
-    private boolean customFunction[][]; // todo user defines this
+    private boolean customFunction[][];
 
 
     public LogicGate(String pid, LogicCircuit c) {
@@ -49,9 +49,22 @@ public abstract class LogicGate {
     }
 
     public boolean addInputConnector(Connector c) {
-        if (inputConnectorsList.size() < 2) {
+        if(inputConnectorsList.isEmpty()) {
             inputConnectorsList.add(c);
+            c.setPosition(0);
             return true;
+        }
+
+        if (inputConnectorsList.size() < 2) {
+            if (inputConnectorsList.get(0).getPosition() == 1) {
+                inputConnectorsList.add(0, c);
+                c.setPosition(0);
+                return true;
+            } else  {
+                inputConnectorsList.add(c);
+                c.setPosition(1);
+                return true;
+            }
         }
         return false;
     }
@@ -73,15 +86,15 @@ public abstract class LogicGate {
     }
 
     public boolean getResultFailure(boolean y1, boolean y2) {
-       if(customFunction != null) {
+        if (customFunction != null) {
 
 
-           for (int i = 0; i < customFunction.length; i++) {
-               if (customFunction[i][0] == y1 && customFunction[i][1] == y2) {
-                   return customFunction[i][2];
-               }
-           }
-       }
+            for (int i = 0; i < customFunction.length; i++) {
+                if (customFunction[i][0] == y1 && customFunction[i][1] == y2) {
+                    return customFunction[i][2];
+                }
+            }
+        }
         return false;
     }
 
@@ -116,6 +129,18 @@ public abstract class LogicGate {
 
     public String getType() {
         return "";
+    }
+
+    public LogicGate getGate() {
+        return null;
+    }
+
+    public double getY() {
+        return 0;
+    }
+
+    public void setIndex(int a){
+
     }
 }
 

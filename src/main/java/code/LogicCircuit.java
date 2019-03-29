@@ -9,7 +9,6 @@ public class LogicCircuit {
     private ArrayList<LogicGate> gates;
     private ArrayList<LogicGate> outputList;
     private boolean[][] truthTable;
-    private int inputs;
     private int rows;
     private ArrayList<LogicGate> inputList;
     private boolean[][] failureTable;
@@ -18,17 +17,15 @@ public class LogicCircuit {
 
     //todo saving and loading data //json?
     //todo reliability analysis for gates
-    //todo removing outputs
 
     public LogicCircuit() {
         this.gates = new ArrayList<>();
-        this.inputs = 0;
         this.rows = 0;
         outputList = new ArrayList<>();
         inputList = new ArrayList<>();
     }
 
-    public void addGate(GateType type, String id) {
+    public void addGate(GateType type, String id, double x) {
         switch (type) {
             case and:
                 gates.add(new And_Gate(id, this));
@@ -50,25 +47,37 @@ public class LogicCircuit {
                 break;
 
             case input:
-                LogicGate g = new Input(id, this, inputs);
-                //      gates.add(g);
-                inputList.add(g);
-                inputs++;
+                addInput(new Input(id, this, inputList.size(), x));
+                break;
+            case output:
+                outputList.add(new Output(id, this, outputList.size()));
                 break;
             default:
                 break;
         }
     }
 
-    public void loadOutputGates() {
-        for (LogicGate g : gates) {
-            outputList.clear();
+    public void addInput(Input input) {
 
-            if (g.getOutput().getEndGate() == null) {
-                g.setOutputId(outputList.size());
-                outputList.add(g);
-                //outputs++;
+        boolean added = false;
+        if (!inputList.isEmpty()) {
+            int a = inputList.size();
+            for (int i = 0; i < a; i++) {
+                if (input.getY() < inputList.get(i).getY()) {
+                    inputList.add(i, input);
+                    added = true;
+                    break;
+                }
             }
+            if (!added) {
+                inputList.add(input);
+            }
+
+        } else {
+            inputList.add(input);
+        }
+        for (int i = 0; i < inputList.size(); i++) {
+            inputList.get(i).setIndex(i);
         }
     }
 
@@ -81,18 +90,15 @@ public class LogicCircuit {
     }
 
     public void getTruthTable() {
-        loadOutputGates();
-        rows = (int) Math.pow(2, inputs);
-        int columns = inputs + outputList.size();
-
+        rows = (int) Math.pow(2, inputList.size());
+        int columns = inputList.size() + outputList.size();
         truthTable = new boolean[rows][columns];
-
         int tmp;
         for (int i = 0; i < rows; i++) {
 
             tmp = i;
 
-            for (int j = 0; j < inputs; j++) {
+            for (int j = 0; j < inputList.size(); j++) {
                 truthTable[i][j] = (tmp % 2 == 1);
                 tmp = tmp >> 1;
             }
@@ -119,6 +125,11 @@ public class LogicCircuit {
                 return input;
             }
         }
+        for (LogicGate output : outputList) {
+            if (id.equals(output.getId())) {
+                return output;
+            }
+        }
         return null;
     }
 
@@ -126,14 +137,35 @@ public class LogicCircuit {
         LogicGate g = getGateById(id);
         ArrayList<String> ids = null;
         if (g != null) {
+            if (g.getType().equals("output")) {
 
-            ids = g.getConnectorsID();
-            for (int i = 0; i < ids.size(); i++) {
-                for (LogicGate gate : gates) {
-                    gate.findAndRemoveConnector(ids.get(i));
+                ids = g.getConnectorsID();
+                g.getGate().findAndRemoveConnector(id);
+                outputList.remove(g);
+            } else if (g.getType().equals("input")) {
+                ids = g.getConnectorsID();
+                for (int i = 0; i < ids.size(); i++) {
+                    for (LogicGate gate : gates) {
+                        gate.findAndRemoveConnector(ids.get(i));
+                    }
                 }
+                inputList.remove(g);
+
+            } else {
+                ids = g.getConnectorsID();
+                for (int i = 0; i < ids.size(); i++) {
+                    for (LogicGate gate : gates) {
+                        gate.findAndRemoveConnector(ids.get(i));
+                    }
+                    for (LogicGate gate : inputList) {
+                        gate.findAndRemoveConnector(ids.get(i));
+                    }
+                    for (LogicGate gate : outputList) {
+                        gate.findAndRemoveConnector(ids.get(i));
+                    }
+                }
+                gates.remove(g);
             }
-            gates.remove(g);
         }
 
         System.out.println("removed");
@@ -179,9 +211,9 @@ public class LogicCircuit {
 
             for (int gate = 0; gate < outputList.size(); gate++) {
 
-                LogicGate output = outputList.get(gate);
+                LogicGate output = outputList.get(gate).getGate();
                 boolean result = this.computeOutput(output, row, truthTable);
-                truthTable[row][gate + inputs] = result;
+                truthTable[row][gate + inputList.size()] = result;
             }
         }
     }
@@ -189,13 +221,13 @@ public class LogicCircuit {
     public void evalFailureTable() {
         for (int i = 0; i < fRows; i++) {
             for (int j = 0; j < gates.size(); j++) {
-                gates.get(j).setWorking(failureTable[i][inputs + j]);
+                gates.get(j).setWorking(failureTable[i][inputList.size() + j]);
             }
 
             for (int gate = 0; gate < outputList.size(); gate++) {
-                LogicGate output = outputList.get(gate);
+                LogicGate output = outputList.get(gate).getGate();
                 boolean result = this.computeOutput(output, i, failureTable);
-                failureTable[i][gate + inputs + gates.size()] = result;
+                failureTable[i][gate + inputList.size() + gates.size()] = result;
             }
         }
     }
@@ -207,7 +239,7 @@ public class LogicCircuit {
         //sets dimensions for table
         int failureRows = (int) Math.pow(2, gates.size());
         fRows = rows * failureRows;
-        int fColumns = gates.size() + outputList.size() + inputs;//outputs and inputs are also in gatesList i think
+        int fColumns = gates.size() + outputList.size() + inputList.size();//outputs and inputs are also in gatesList i think
 
         failureTable = new boolean[fRows][fColumns];
         int tmp;
@@ -216,11 +248,11 @@ public class LogicCircuit {
         for (int i = 0; i < rows; i++) {
             int a = i * failureRows;
             for (int j = 0; j < failureRows; j++) {
-                System.arraycopy(truthTable[i], 0, failureTable[j + a], 0, inputs);
+                System.arraycopy(truthTable[i], 0, failureTable[j + a], 0, inputList.size());
 
                 tmp = j;
                 for (int k = 0; k < gates.size(); k++) {
-                    failureTable[j + a][k + inputs] = (tmp % 2 == 1);
+                    failureTable[j + a][k + inputList.size()] = (tmp % 2 == 1);
                     tmp = tmp >> 1;
                 }
             }
@@ -251,7 +283,7 @@ public class LogicCircuit {
 
         structF = new boolean[fRows][outputList.size()];
         for (int j = 0; j < fRows; j++) {
-            System.arraycopy(failureTable[j], (inputs + gates.size()), structF[j], 0, outputList.size());
+            System.arraycopy(failureTable[j], (inputList.size() + gates.size()), structF[j], 0, outputList.size());
         }
     }
 
@@ -265,7 +297,7 @@ public class LogicCircuit {
             int a = i * failureRows;
             for (int j = 0; j < failureRows; j++) {
                 for (int k = 0; k < outputList.size(); k++) {
-                    if (structF[j + a][k] == truthTable[i][inputs + k]) {
+                    if (structF[j + a][k] == truthTable[i][inputList.size() + k]) {
                         truths++;
                     }
                 }

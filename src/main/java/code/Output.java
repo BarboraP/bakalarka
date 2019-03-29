@@ -16,4 +16,12 @@ public class Output extends LogicGate {
         return true;
     }
 
+    public LogicGate getGate(){
+        return getInputList().get(0).getStartGate();
+    }
+
+    public String getType() {
+        return "output";
+    }
+
 }

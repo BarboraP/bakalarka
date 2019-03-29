@@ -7,6 +7,7 @@ import code.LogicGate;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -217,11 +218,12 @@ public class RootLayout extends AnchorPane {
                         setStyleGate(type, gate);
                         right_pane.getChildren().add(gate);
 
-                        circuit.addGate(type, gate.getId());
+
 
                         //adds gate to the children of right_pane
                         Point2D cursorPoint = container.getValue("scene_coords");
                         gate.relocateToPoint(new Point2D(cursorPoint.getX() - 32, cursorPoint.getY() - 32));
+                        circuit.addGate(type, gate.getId(), cursorPoint.getY());
                     }
                 }
 
