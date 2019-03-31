@@ -137,6 +137,7 @@ public class LogicCircuit {
         LogicGate g = getGateById(id);
         ArrayList<String> ids = null;
         if (g != null) {
+
             if (g.getType().equals("output")) {
 
                 ids = g.getConnectorsID();
