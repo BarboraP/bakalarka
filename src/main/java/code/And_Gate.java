@@ -2,8 +2,9 @@ package code;
 
 public class And_Gate extends LogicGate {
 
-    public And_Gate(String pid, LogicCircuit c) {
-        super(pid, c);
+
+    public And_Gate(String pid) {
+        super(pid);
     }
 
     public boolean getResult(boolean y1, boolean y2) {

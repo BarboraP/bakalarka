@@ -8,12 +8,13 @@ public class LogicCircuit {
 
     private ArrayList<LogicGate> gates;
     private ArrayList<LogicGate> outputList;
-    private boolean[][] truthTable;
-    private int rows;
+    transient private boolean[][] truthTable;
+    transient private int rows;
     private ArrayList<LogicGate> inputList;
-    private boolean[][] failureTable;
-    private int fRows;
-    private boolean[][] structF;
+    transient private boolean[][] failureTable;
+    transient private int fRows;
+    transient private boolean[][] structF;
+    private ArrayList<Connector> connectors;
 
     //todo saving and loading data //json?
     //todo reliability analysis for gates
@@ -23,34 +24,35 @@ public class LogicCircuit {
         this.rows = 0;
         outputList = new ArrayList<>();
         inputList = new ArrayList<>();
+        connectors = new ArrayList<>();
     }
 
     public void addGate(GateType type, String id, double x) {
         switch (type) {
             case and:
-                gates.add(new And_Gate(id, this));
+                gates.add(new And_Gate(id));
                 break;
             case or:
-                gates.add(new Or_Gate(id, this));
+                gates.add(new Or_Gate(id));
                 break;
 
             case nand:
-                gates.add(new Nand_Gate(id, this));
+                gates.add(new Nand_Gate(id));
                 break;
 
             case nor:
-                gates.add(new Nor_Gate(id, this));
+                gates.add(new Nor_Gate(id));
                 break;
 
             case xor:
-                gates.add(new Xor_Gate(id, this));
+                gates.add(new Xor_Gate(id));
                 break;
 
             case input:
-                addInput(new Input(id, this, inputList.size(), x));
+                addInput(new Input(id, inputList.size(), x));
                 break;
             case output:
-                outputList.add(new Output(id, this, outputList.size()));
+                outputList.add(new Output(id, outputList.size()));
                 break;
             default:
                 break;
@@ -306,4 +308,21 @@ public class LogicCircuit {
         }
         return (((double) truths / fRows)) * 100;
     }
+
+    public void addConnector(Connector c){
+        connectors.add(c);
+    }
+
+    public void setConnections(){
+
+        for(Connector c : connectors){
+            LogicGate g = getGateById(c.getStartGateId());
+            g.setOutput(c);
+            c.setStartGate(g);
+            LogicGate g1 = getGateById(c.getEndGateId());
+            g1.addConnectorByPosition(c);
+            c.setEndGate(g1);
+        }
+    }
+
 }

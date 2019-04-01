@@ -4,21 +4,20 @@ import java.util.ArrayList;
 
 public abstract class LogicGate {
 
-    private boolean isWorking;
-    private Connector output;
-    protected ArrayList<Connector> inputConnectorsList;
-    private final String id;
+    transient private boolean isWorking;
+    transient private Connector output;
+    transient protected ArrayList<Connector> inputConnectorsList;
+    private  String id;
     private int outputId;
-    protected LogicCircuit circuit = null;
-    private boolean customFunction[][];
+    transient private boolean customFunction[][];
 
 
-    public LogicGate(String pid, LogicCircuit c) {
+    public LogicGate(String pid) {
         isWorking = true;
         id = pid;
         inputConnectorsList = new ArrayList<>();
-        circuit = c;
     }
+
 
     public int getOutputId() {
         return outputId;
@@ -142,5 +141,30 @@ public abstract class LogicGate {
     public void setIndex(int a){
 
     }
+
+   /* public void setConnectorGate(){
+        for (Connector c : inputConnectorsList) {
+            c.setEndGate(this);
+        }
+
+        if(output != null){
+            output.setStartGate(this);
+        }
+
+    }*/
+
+   public void addConnectorByPosition(Connector c){
+       if(inputConnectorsList == null) {
+           inputConnectorsList = new ArrayList<>();
+       }
+       if (inputConnectorsList.size() < 2) {
+           if (c.getPosition() == 0) {
+               inputConnectorsList.add(0, c);
+
+           } else  {
+               inputConnectorsList.add(1,c);
+           }
+       }
+   }
 }
 

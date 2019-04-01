@@ -2,6 +2,7 @@ package graphics_controls;
 
 
 import code.Connector;
+import code.DataManager;
 import code.LogicCircuit;
 import code.LogicGate;
 import javafx.event.EventHandler;
@@ -44,6 +45,10 @@ public class RootLayout extends AnchorPane {
     private ScrollPane sc = null;
     @FXML
     private AnchorPane base_right_pane = null;
+    @FXML
+    private Button but_save = null;
+    @FXML
+    private Button but_load = null;
 
     private DragIcon dragOverIcon = null;
 
@@ -52,6 +57,7 @@ public class RootLayout extends AnchorPane {
     private EventHandler<DragEvent> iconDragOverRightPaneHandler = null;
 
     private LogicCircuit circuit = null;
+    private DataManager manager = null;
 
 
     public RootLayout() {
@@ -101,6 +107,8 @@ public class RootLayout extends AnchorPane {
         buildDragHandlers();
         buttonTable();
         buttonFailure();
+        buttonSave();
+        buttonLoad();
 
     }
 
@@ -150,8 +158,35 @@ public class RootLayout extends AnchorPane {
 
     }
 
+    public void buttonSave() {
+
+        but_save.setOnAction((event) -> {
+            try {
+                manager.saveCircuit(circuit,"test");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+    }
+
+    public void buttonLoad() {
+
+        but_load.setOnAction((event) -> {
+            try {
+                manager.loadCircuit("test");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+    }
+
     public void initCircuit(LogicCircuit c) {
         circuit = c;
+    }
+    public void initManager(DataManager m){
+        manager = m;
     }
 
     public LogicCircuit getCircuit() {
@@ -264,6 +299,7 @@ public class RootLayout extends AnchorPane {
                             LogicGate sourceGate = circuit.getGateById(sourceId);
                             LogicGate targetGate = circuit.getGateById(targetId);
                             Connector connector = new Connector(sourceGate, targetGate, link.getId());
+                            circuit.addConnector(connector);
 
                             if (targetGate == null) {
                                 link.bindEnds(source, target);

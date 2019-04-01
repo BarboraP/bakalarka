@@ -14,7 +14,9 @@ public class Main extends Application {
         BorderPane root = new BorderPane();
         LogicCircuit circuit = new LogicCircuit();
         RootLayout rootLayout = new RootLayout();
+        DataManager m = new DataManager();
         rootLayout.initCircuit(circuit);
+        rootLayout.initManager(m);
 
         try {
             Scene scene = new Scene(root, 640, 480);

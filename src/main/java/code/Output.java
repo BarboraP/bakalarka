@@ -3,8 +3,8 @@ package code;
 public class Output extends LogicGate {
     private int index;
 
-    public Output(String pid, LogicCircuit c, int index) {
-        super(pid, c);
+    public Output(String pid,  int index) {
+        super(pid);
         this.index = index;
     }
 
