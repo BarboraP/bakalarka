@@ -87,7 +87,7 @@ public class DataManager {
 
         LogicCircuit c = gson.fromJson(br, LogicCircuit.class);
         c.setConnections();
-        System.out.println("miau");
+        //System.out.println("miau");
     }
 
 

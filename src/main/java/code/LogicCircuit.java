@@ -14,11 +14,18 @@ public class LogicCircuit {
     transient private boolean[][] failureTable;
     transient private int fRows;
     transient private boolean[][] structF;
+
+    private boolean[] structFunction;
+
     private ArrayList<Connector> connectors;
 
     //todo saving and loading data //json?
-    //todo reliability analysis for gates
+    //todo get name of file to save/load
+    //todo save and load graphic components
 
+    //todo reliability analysis for gates//struct index
+    //todo show failure func for gates
+    //todo FIX THE STRUCTURAL FUNCTION
     public LogicCircuit() {
         this.gates = new ArrayList<>();
         this.rows = 0;
@@ -284,9 +291,53 @@ public class LogicCircuit {
 
     public void getStructFunction() {
 
-        structF = new boolean[fRows][outputList.size()];
-        for (int j = 0; j < fRows; j++) {
-            System.arraycopy(failureTable[j], (inputList.size() + gates.size()), structF[j], 0, outputList.size());
+        boolean[][] substructureF = new boolean[fRows][outputList.size()];
+
+        structFunction = new boolean[fRows];
+
+        int failureRows = (int) Math.pow(2, gates.size());
+
+        //for every collumn
+        for (int k = 0; k < outputList.size(); k++) {
+
+
+            //for every row
+            for (int i = 0; i < rows; i++) {
+                int a = i * failureRows;
+                for (int j = 0; j < failureRows; j++) {
+
+                    if (truthTable[i][k + inputList.size()] == failureTable[j + a][k + inputList.size() + outputList.size()]) {
+                        substructureF[j + a][k] = true;
+                    } else {
+                        substructureF[j + a][k] = false;
+                    }
+
+                }
+            }
+
+        }
+
+        int equals = 0;
+
+        for (int i = 0; i < fRows; i++) {
+
+            if (outputList.size() > 1) {
+
+
+                equals = 0;
+                for (int j = 0; j < outputList.size(); j++) {
+                    if (substructureF[i][0] == substructureF[i][j]) {
+                        equals++;
+                    }
+                }
+                if (equals == outputList.size()) {
+                    structFunction[i] = true;
+                } else {
+                    structFunction[i] = false;
+                }
+            } else {
+                structFunction[i] = substructureF[i][0];
+            }
         }
     }
 
@@ -294,28 +345,23 @@ public class LogicCircuit {
 
         getStructFunction();
 
-        int failureRows = (int) Math.pow(2, gates.size());
-        int truths = 0;
-        for (int i = 0; i < rows; i++) {
-            int a = i * failureRows;
-            for (int j = 0; j < failureRows; j++) {
-                for (int k = 0; k < outputList.size(); k++) {
-                    if (structF[j + a][k] == truthTable[i][inputList.size() + k]) {
-                        truths++;
-                    }
-                }
+        int values = 0;
+
+        for (int i = 0; i < fRows; i++) {
+            if (structFunction[i] == true) {
+                values++;
             }
         }
-        return (((double) truths / fRows)) * 100;
+        return (double) values / fRows * 100;
     }
 
-    public void addConnector(Connector c){
+    public void addConnector(Connector c) {
         connectors.add(c);
     }
 
-    public void setConnections(){
+    public void setConnections() {
 
-        for(Connector c : connectors){
+        for (Connector c : connectors) {
             LogicGate g = getGateById(c.getStartGateId());
             g.setOutput(c);
             c.setStartGate(g);
