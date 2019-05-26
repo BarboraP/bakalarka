@@ -128,6 +128,7 @@ public class RootLayout extends AnchorPane {
             ra.initTable(ra.getTableComp(), ra.getTable_comp());
             ra.initTable(ra.getTableTruth(), ra.getTable_truth());
             ra.setLabelRelText(circuit.getRel());
+            ra.setLabelStructText(circuit.getStringStruct());
 
             tabs.setScene(new Scene(ra));
 

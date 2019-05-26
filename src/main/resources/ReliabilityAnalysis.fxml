@@ -17,7 +17,7 @@
                      <children>
                         <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="435.0" prefWidth="640.0">
                            <content>
-                              <TableView fx:id="table_truth" prefHeight="200.0" prefWidth="200.0">
+                              <TableView fx:id="table_truth" minHeight="330.0" minWidth="540.0" prefHeight="343.0" prefWidth="649.0">
                               </TableView>
                            </content>
                         </ScrollPane>
@@ -28,21 +28,30 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="435.0" prefWidth="640.0">
+                        <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="338.0" prefWidth="540.0">
                            <content>
-                              <TableView fx:id="table_comp" prefHeight="200.0" prefWidth="200.0">
+                              <TableView fx:id="table_comp" prefHeight="338.0" prefWidth="538.0">
                               </TableView>
                            </content></ScrollPane>
                      </children></AnchorPane>
             </content>
           </Tab>
-            <Tab text="Reliability">
+            <Tab text="Availability">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Label fx:id="label_rel" layoutX="372.0" layoutY="154.0" text="Label" />
-                        <Label layoutX="59.0" layoutY="154.0" text="Reliability of this whole circuit is:" />
+                        <Label layoutX="59.0" layoutY="154.0" text="Availability of this whole circuit is:" />
                      </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Structure Function">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <children>
+                        <Label fx:id="label_struct" alignment="TOP_LEFT" layoutX="228.0" layoutY="154.0" prefHeight="150.0" prefWidth="292.0" text="Label" />
+                        <Label layoutX="59.0" layoutY="154.0" text="Structure function:" />
+                    </children></AnchorPane>
               </content>
             </Tab>
         </tabs>

@@ -26,6 +26,8 @@ public class ReliabilityAnalysis extends AnchorPane {
     private TableView<Boolean[]> table_comp = null;
     @FXML
     private Label label_rel = null;
+    @FXML
+    private Label label_struct = null;
 
     private Boolean[][] tableTruth = null;
     private Boolean[][] tableComp = null;
@@ -51,6 +53,12 @@ public class ReliabilityAnalysis extends AnchorPane {
     public void setLabelRelText(double value) {
         label_rel.setText(value + "%");
     }
+
+    public void setLabelStructText(String value){
+        label_struct.setText(value);
+    }
+
+
 
     public TableView<Boolean[]> getTable_truth() {
         return table_truth;

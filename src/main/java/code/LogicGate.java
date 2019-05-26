@@ -10,14 +10,32 @@ public abstract class LogicGate {
     private  String id;
     private int outputId;
     transient private boolean customFunction[][];
+    transient int criticalVectors;
+    transient double sim;
+    transient double importance;
 
 
     public LogicGate(String pid) {
         isWorking = true;
         id = pid;
         inputConnectorsList = new ArrayList<>();
+        criticalVectors = 0;
+        sim = 0;
+        importance = 0;
     }
 
+
+    public void computeSim(int numOfInputs) {
+        sim = (double) criticalVectors/numOfInputs;
+    }
+
+    public double getSim() {
+        return sim;
+    }
+
+    public void setImportance(double importance) {
+        this.importance = importance;
+    }
 
     public int getOutputId() {
         return outputId;
@@ -141,17 +159,6 @@ public abstract class LogicGate {
     public void setIndex(int a){
 
     }
-
-   /* public void setConnectorGate(){
-        for (Connector c : inputConnectorsList) {
-            c.setEndGate(this);
-        }
-
-        if(output != null){
-            output.setStartGate(this);
-        }
-
-    }*/
 
    public void addConnectorByPosition(Connector c){
        if(inputConnectorsList == null) {

@@ -25,7 +25,7 @@ public class LogicCircuit {
 
     //todo reliability analysis for gates//struct index
     //todo show failure func for gates
-    //todo FIX THE STRUCTURAL FUNCTION
+
     public LogicCircuit() {
         this.gates = new ArrayList<>();
         this.rows = 0;
@@ -343,16 +343,21 @@ public class LogicCircuit {
 
     public double getRel() {
 
-        getStructFunction();
+        if(gates.size() > 0) {
 
-        int values = 0;
 
-        for (int i = 0; i < fRows; i++) {
-            if (structFunction[i] == true) {
-                values++;
+            getStructFunction();
+
+            int values = 0;
+
+            for (int i = 0; i < fRows; i++) {
+                if (structFunction[i] == true) {
+                    values++;
+                }
             }
+            return (double) values / fRows * 100;
         }
-        return (double) values / fRows * 100;
+        return 0;
     }
 
     public void addConnector(Connector c) {
@@ -368,6 +373,31 @@ public class LogicCircuit {
             LogicGate g1 = getGateById(c.getEndGateId());
             g1.addConnectorByPosition(c);
             c.setEndGate(g1);
+        }
+    }
+
+    public String getStringStruct(){
+
+        String s = "";
+        if(structFunction != null) {
+            for(int i = 0; i < structFunction.length; i++) {
+                s += structFunction[i] + ", ";
+            }
+        }
+
+        return s;
+    }
+
+
+    public void getNumOfCriticalVectors(){
+        //TODO for every gate
+    }
+
+    public void computeImportances(){
+        double probability = (double) 1/rows;
+
+        for (LogicGate g : gates){
+            g.setImportance(g.getSim() * probability);
         }
     }
 
