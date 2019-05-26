@@ -7,12 +7,12 @@ public abstract class LogicGate {
     transient private boolean isWorking;
     transient private Connector output;
     transient protected ArrayList<Connector> inputConnectorsList;
-    private  String id;
+    private String id;
     private int outputId;
     transient private boolean customFunction[][];
-    transient int criticalVectors;
-    transient double sim;
-    transient double importance;
+    transient private int criticalVectors;
+    transient private double sim;
+    transient private double importance;
 
 
     public LogicGate(String pid) {
@@ -25,16 +25,24 @@ public abstract class LogicGate {
     }
 
 
-    public void computeSim(int numOfInputs) {
-        sim = (double) criticalVectors/numOfInputs;
+    public void computeSim(int numOfGates) {
+        sim = (double) criticalVectors / (Math.pow(2, (numOfGates - 1)));
     }
 
     public double getSim() {
         return sim;
     }
 
+    public void addCritVector() {
+        criticalVectors++;
+    }
+
     public void setImportance(double importance) {
         this.importance = importance;
+    }
+
+    public double getImportance() {
+        return importance;
     }
 
     public int getOutputId() {
@@ -66,7 +74,7 @@ public abstract class LogicGate {
     }
 
     public boolean addInputConnector(Connector c) {
-        if(inputConnectorsList.isEmpty()) {
+        if (inputConnectorsList.isEmpty()) {
             inputConnectorsList.add(c);
             c.setPosition(0);
             return true;
@@ -77,7 +85,7 @@ public abstract class LogicGate {
                 inputConnectorsList.add(0, c);
                 c.setPosition(0);
                 return true;
-            } else  {
+            } else {
                 inputConnectorsList.add(c);
                 c.setPosition(1);
                 return true;
@@ -156,22 +164,22 @@ public abstract class LogicGate {
         return 0;
     }
 
-    public void setIndex(int a){
+    public void setIndex(int a) {
 
     }
 
-   public void addConnectorByPosition(Connector c){
-       if(inputConnectorsList == null) {
-           inputConnectorsList = new ArrayList<>();
-       }
-       if (inputConnectorsList.size() < 2) {
-           if (c.getPosition() == 0) {
-               inputConnectorsList.add(0, c);
+    public void addConnectorByPosition(Connector c) {
+        if (inputConnectorsList == null) {
+            inputConnectorsList = new ArrayList<>();
+        }
+        if (inputConnectorsList.size() < 2) {
+            if (c.getPosition() == 0) {
+                inputConnectorsList.add(0, c);
 
-           } else  {
-               inputConnectorsList.add(1,c);
-           }
-       }
-   }
+            } else {
+                inputConnectorsList.add(1, c);
+            }
+        }
+    }
 }
 

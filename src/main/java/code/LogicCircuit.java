@@ -277,6 +277,7 @@ public class LogicCircuit {
             }
             System.out.println();
         }
+        getStructFunction();
     }
 
 
@@ -343,10 +344,10 @@ public class LogicCircuit {
 
     public double getRel() {
 
-        if(gates.size() > 0) {
+        if (gates.size() > 0) {
 
 
-            getStructFunction();
+           // getStructFunction();
 
             int values = 0;
 
@@ -376,29 +377,76 @@ public class LogicCircuit {
         }
     }
 
-    public String getStringStruct(){
-
+    public String getStringStruct() {
         String s = "";
-        if(structFunction != null) {
-            for(int i = 0; i < structFunction.length; i++) {
+        if (structFunction != null) {
+            for (int i = 0; i < structFunction.length; i++) {
                 s += structFunction[i] + ", ";
             }
         }
-
         return s;
     }
 
+    /**
+     *
+     * @param type
+     * true for gate failure resulting in circuit failure
+     * false for gate repair resulting in circuit failure
+     */
+    public void getNumOfCriticalVectors(Boolean type) {
 
-    public void getNumOfCriticalVectors(){
-        //TODO for every gate
+
+        //TODO JUST FOR ONE GATE CIRCUITS NOW
+
+        int failureRows = (int) Math.pow(2, gates.size());
+        int rowType = -1;
+        if (gates.size() == 1) {
+            for (int i = 0; i < rows; i++) {
+                int a = i * failureRows;
+                for (int j = 0; j < failureRows; j++) {
+
+                    if (failureTable[j + a][inputList.size()] == type) {
+                        rowType = j + a;
+
+                        if (structFunction[j + a]) {
+
+                            if (j == 0) {
+                                if (failureTable[1 + a][inputList.size()] != type) {
+                                    if (!structFunction[1 + a]) {
+                                        gates.get(0).addCritVector();
+                                    }
+                                }
+                            } else {
+                                if (failureTable[a][inputList.size()] != type) {
+                                    if (!structFunction[a]) {
+                                        gates.get(0).addCritVector();
+                                    }
+                                }
+                            }
+                        }
+
+
+                    }
+                }
+            }
+        }
+        System.out.println("mau");
     }
 
-    public void computeImportances(){
-        double probability = (double) 1/rows;
+    public void computeImportances() {
+        double probability = (double) 1 / rows;
 
-        for (LogicGate g : gates){
+        for (LogicGate g : gates) {
+            g.computeSim(gates.size());
             g.setImportance(g.getSim() * probability);
         }
     }
 
+    public void importanceAnalysis() {
+        getNumOfCriticalVectors(true);
+        //getNumOfCriticalVectors(false);
+        computeImportances();
+        System.out.println(gates.get(0).getImportance() + "meow");
+
+    }
 }

@@ -116,6 +116,7 @@ public class RootLayout extends AnchorPane {
         button_truthTable.setOnAction((event) -> {
             circuit.getTruthTable();
             circuit.getFailureTable();
+            circuit.importanceAnalysis();
 
             Stage tabs = new Stage();
 
