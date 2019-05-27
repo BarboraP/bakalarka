@@ -347,7 +347,7 @@ public class LogicCircuit {
         if (gates.size() > 0) {
 
 
-           // getStructFunction();
+            // getStructFunction();
 
             int values = 0;
 
@@ -387,40 +387,26 @@ public class LogicCircuit {
         return s;
     }
 
-    /**
-     *
-     * @param type
-     * true for gate failure resulting in circuit failure
-     * false for gate repair resulting in circuit failure
-     */
-    public void getNumOfCriticalVectors(Boolean type) {
-
-
-        //TODO JUST FOR ONE GATE CIRCUITS NOW
+    public void computeCriticalVectors(int gateIndex, boolean type) {
 
         int failureRows = (int) Math.pow(2, gates.size());
-        int rowType = -1;
-        if (gates.size() == 1) {
-            for (int i = 0; i < rows; i++) {
-                int a = i * failureRows;
-                for (int j = 0; j < failureRows; j++) {
 
-                    if (failureTable[j + a][inputList.size()] == type) {
-                        rowType = j + a;
+        //for every combination
+        for (int combination = 0; combination < rows; combination++) {
+            int a = combination * failureRows;
 
-                        if (structFunction[j + a]) {
+            for (int i = 0; i < failureRows; i++) {
 
-                            if (j == 0) {
-                                if (failureTable[1 + a][inputList.size()] != type) {
-                                    if (!structFunction[1 + a]) {
-                                        gates.get(0).addCritVector();
-                                    }
-                                }
-                            } else {
-                                if (failureTable[a][inputList.size()] != type) {
-                                    if (!structFunction[a]) {
-                                        gates.get(0).addCritVector();
-                                    }
+
+                //if gate x has state "type" with each input combination
+                if ((failureTable[i + a][gateIndex + inputList.size()] == type) && (structFunction[i + a])) {
+
+                    //find row with opposite state of gate x
+                    for (int j = 0; j < failureRows; j++) {
+                        if ((i != j) && (failureTable[j + a][gateIndex + inputList.size()] != type)) {
+                            if (compareGatesStates(gateIndex, (i + a), (j + a))) {
+                                if (!structFunction[j + a]) {
+                                    gates.get(gateIndex).addCritVector();
                                 }
                             }
                         }
@@ -428,7 +414,6 @@ public class LogicCircuit {
                 }
             }
         }
-        System.out.println("mau");
     }
 
     public void computeImportances() {
@@ -441,10 +426,27 @@ public class LogicCircuit {
     }
 
     public void importanceAnalysis() {
-        getNumOfCriticalVectors(true);
-        //getNumOfCriticalVectors(false);
-        computeImportances();
-        System.out.println(gates.get(0).getImportance() + "meow");
 
+        for (int i = 0; i < gates.size(); i++) {
+            computeCriticalVectors(i, true);
+            computeCriticalVectors(i, false);
+        }
+
+        computeImportances();
+        for(LogicGate g : gates) {
+            System.out.println(g.getImportance());
+        }
+
+    }
+
+    private boolean compareGatesStates(int gateIndex, int firstRow, int secondRow) {
+        for (int t = 0; t < gates.size(); t++) {
+            if (t != gateIndex) {
+                if (failureTable[firstRow][t + inputList.size()] != failureTable[secondRow][t + inputList.size()]) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }

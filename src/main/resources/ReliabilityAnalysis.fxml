@@ -49,7 +49,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                     <children>
-                        <Label fx:id="label_struct" alignment="TOP_LEFT" layoutX="228.0" layoutY="154.0" prefHeight="150.0" prefWidth="292.0" text="Label" />
+                        <Label fx:id="label_struct" alignment="TOP_LEFT" layoutX="228.0" layoutY="154.0" prefHeight="150.0" prefWidth="292.0" text="Label" wrapText="true" />
                         <Label layoutX="59.0" layoutY="154.0" text="Structure function:" />
                     </children></AnchorPane>
               </content>
