@@ -49,6 +49,8 @@ public class RootLayout extends AnchorPane {
     private Button but_save = null;
     @FXML
     private Button but_load = null;
+    @FXML
+    private Button but_show = null;
 
     private DragIcon dragOverIcon = null;
 
@@ -109,6 +111,7 @@ public class RootLayout extends AnchorPane {
         buttonFailure();
         buttonSave();
         buttonLoad();
+        buttonShow();
 
     }
 
@@ -183,6 +186,21 @@ public class RootLayout extends AnchorPane {
             }
         });
 
+    }
+
+    public void buttonShow(){
+        but_show.setOnAction((event) -> {
+            Stage show = new Stage();
+
+            show = new Stage();
+            ShowFunction sf = new ShowFunction();
+            sf.setCircuit(circuit);
+            show.setScene(new Scene(sf));
+
+            show.initModality(Modality.WINDOW_MODAL);
+            show.initOwner(this.getScene().getWindow());
+            show.show();
+        });
     }
 
     public void initCircuit(LogicCircuit c) {

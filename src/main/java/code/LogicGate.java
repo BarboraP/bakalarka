@@ -33,6 +33,10 @@ public abstract class LogicGate {
         return sim;
     }
 
+    public boolean[][] getCustomFunction() {
+        return customFunction;
+    }
+
     public void addCritVector() {
         criticalVectors++;
     }

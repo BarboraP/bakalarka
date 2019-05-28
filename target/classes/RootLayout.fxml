@@ -37,6 +37,7 @@
                                 text="Define failure function" wrapText="true"/>
                         <Button fx:id="but_save" mnemonicParsing="false" textAlignment="CENTER" prefHeight="50" text="Save circuit" maxWidth="110.0" prefWidth="110.0" wrapText="true"/>
                         <Button fx:id="but_load" mnemonicParsing="false" textAlignment="CENTER" prefHeight="50" text="Load circuit" maxWidth="110.0" prefWidth="110.0" wrapText="true"/>
+                        <Button fx:id="but_show" mnemonicParsing="false" textAlignment="CENTER" prefHeight="50" text="Show defined function" maxWidth="110.0" prefWidth="110.0" wrapText="true"/>
                     </children>
                 </VBox>
 

@@ -16,7 +16,7 @@ public class LogicCircuit {
     private boolean[] structFunction;
 
     private ArrayList<Connector> connectors;
-    
+
     //todo save and load graphic components
     //todo show failure func for gates
 
@@ -284,6 +284,16 @@ public class LogicCircuit {
             }
         }
     }
+
+    public boolean[][] getFailureFuncion(String type){
+        for(LogicGate g : gates){
+            if(g.getType().equals(type)) {
+                return g.getCustomFunction();
+            }
+        }
+        return null;
+    }
+
 
     public void getStructFunction() {
 
