@@ -13,17 +13,11 @@ public class LogicCircuit {
     private ArrayList<LogicGate> inputList;
     transient private boolean[][] failureTable;
     transient private int fRows;
-    transient private boolean[][] structF;
-
     private boolean[] structFunction;
 
     private ArrayList<Connector> connectors;
-
-    //todo saving and loading data //json?
-    //todo get name of file to save/load
+    
     //todo save and load graphic components
-
-    //todo reliability analysis for gates//struct index
     //todo show failure func for gates
 
     public LogicCircuit() {
@@ -277,6 +271,7 @@ public class LogicCircuit {
             }
             System.out.println();
         }
+
         getStructFunction();
     }
 
@@ -324,7 +319,6 @@ public class LogicCircuit {
 
             if (outputList.size() > 1) {
 
-
                 equals = 0;
                 for (int j = 0; j < outputList.size(); j++) {
                     if (substructureF[i][0] == substructureF[i][j]) {
@@ -345,12 +339,7 @@ public class LogicCircuit {
     public double getRel() {
 
         if (gates.size() > 0) {
-
-
-            // getStructFunction();
-
             int values = 0;
-
             for (int i = 0; i < fRows; i++) {
                 if (structFunction[i] == true) {
                     values++;
@@ -416,7 +405,7 @@ public class LogicCircuit {
         }
     }
 
-    public void computeImportances() {
+    public void computeImportance() {
         double probability = (double) 1 / rows;
 
         for (LogicGate g : gates) {
@@ -432,7 +421,7 @@ public class LogicCircuit {
             computeCriticalVectors(i, false);
         }
 
-        computeImportances();
+        computeImportance();
         for(LogicGate g : gates) {
             System.out.println(g.getImportance());
         }
@@ -448,5 +437,15 @@ public class LogicCircuit {
             }
         }
         return true;
+    }
+
+    public String getImportanceString() {
+        String s = "";
+        if(gates.size() > 0){
+            for(int i = 0; i < gates.size(); i++) {
+                s += "x" + (i+1) + ": " + gates.get(i).getImportance() + "\n";
+            }
+        }
+        return s;
     }
 }

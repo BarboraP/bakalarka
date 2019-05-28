@@ -28,6 +28,8 @@ public class ReliabilityAnalysis extends AnchorPane {
     private Label label_rel = null;
     @FXML
     private Label label_struct = null;
+    @FXML
+    private Label label_im = null;
 
     private Boolean[][] tableTruth = null;
     private Boolean[][] tableComp = null;
@@ -56,6 +58,10 @@ public class ReliabilityAnalysis extends AnchorPane {
 
     public void setLabelStructText(String value){
         label_struct.setText(value);
+    }
+
+    public void setLabelImportanceText(String value){
+        label_im.setText(value);
     }
 
 
