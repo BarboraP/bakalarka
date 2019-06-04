@@ -17,8 +17,6 @@ public class LogicCircuit {
 
     private ArrayList<Connector> connectors;
 
-    //todo save and load graphic components
-    //todo show failure func for gates
 
     public LogicCircuit() {
         this.gates = new ArrayList<>();
